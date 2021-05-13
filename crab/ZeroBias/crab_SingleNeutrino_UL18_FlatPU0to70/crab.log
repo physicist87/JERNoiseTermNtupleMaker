@@ -1,0 +1,195 @@
+DEBUG 2021-05-12 02:28:37.750 UTC: 	 CRAB Client version: v3.210323
+DEBUG 2021-05-12 02:28:37.750 UTC: 	 Running on: Linux cms01.knu.ac.kr 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux - CentOS Linux 7 (Core)
+DEBUG 2021-05-12 02:28:37.750 UTC: 	 Executing command: 'submit'
+DEBUG 2021-05-12 02:28:37.751 UTC: 	 Found CRAB cache file /u/user/sha/.crab3
+DEBUG 2021-05-12 02:28:37.765 UTC: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2021-05-12 02:28:37.796 UTC: 	 Checking credentials
+DEBUG 2021-05-12 02:28:37.796 UTC: 	 Found proxy file /tmp/x509up_u40993
+DEBUG 2021-05-12 02:28:37.796 UTC: 	 Getting proxy life time left
+DEBUG 2021-05-12 02:28:38.001 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u40993 -timeleft
+ output : 42146
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:28:38.109 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u40993 -actimeleft
+ output : 42135
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:28:38.109 UTC: 	 Proxy lifetime 42146 secs is different from voms extension lifetime 42135 secs for proxy: /tmp/x509up_u40993
+DEBUG 2021-05-12 02:28:38.110 UTC: 	 Proxy valid for 11:42:15 hours
+DEBUG 2021-05-12 02:28:38.216 UTC: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u40993 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:28:39.686 UTC: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+DEBUG 2021-05-12 02:28:39.803 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u40993 -identity
+ output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:28:39.817 UTC: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2021-05-12 02:28:39.818 UTC: 	 using d7177be87781b13fd494d875371b6bc32ea7a2fa as credential login name
+DEBUG 2021-05-12 02:28:42.629 UTC: 	 Executing : 
+ command : myproxy-info -l d7177be87781b13fd494d875371b6bc32ea7a2fa -s myproxy.cern.ch
+ output : 
+ error: ERROR from myproxy-server:
+no credentials found for user d7177be87781b13fd494d875371b6bc32ea7a2fa, owner "/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha" 
+
+ retcode : 1
+DEBUG 2021-05-12 02:28:42.629 UTC: 	 Myproxy is valid: -1
+DEBUG 2021-05-12 02:28:42.737 UTC: 	 Executing : 
+ command : openssl x509 -noout -in ~/.globus/usercert.pem -dates
+ output : notBefore=Apr 29 12:36:02 2020 GMT
+notAfter=Jun  3 12:36:02 2021 GMT
+
+ error: 
+ retcode : 0
+INFO 2021-05-12 02:28:42.869 UTC: 	 Your user certificate is going to expire in 22 days. See: https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookStartingGrid#ObtainingCert 
+INFO 2021-05-12 02:28:42.869 UTC: 	 [91mDelegating your proxy for 22 days instead of 30 [0m
+DEBUG 2021-05-12 02:28:42.869 UTC: 	 Delegating a myproxy for 528:00 hours
+DEBUG 2021-05-12 02:28:42.870 UTC: 	 using d7177be87781b13fd494d875371b6bc32ea7a2fa as credential login name
+DEBUG 2021-05-12 02:29:14.844 UTC: 	 Executing : 
+ command : export GT_PROXY_MODE=rfc ; myproxy-init -d -n -s myproxy.cern.ch -x -R '/DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch' -x -Z '/DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch' -l 'd7177be87781b13fd494d875371b6bc32ea7a2fa' -t 168:00 -c 528:00
+ output : Your identity: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha
+Creating proxy ................................................................................................................................................................................................. Done
+Proxy Verify OK
+Your proxy is valid until: Thu Jun  3 11:29:12 2021
+A proxy valid for 528 hours (22.0 days) for user d7177be87781b13fd494d875371b6bc32ea7a2fa now exists on myproxy.cern.ch.
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:29:14.844 UTC: 	 using d7177be87781b13fd494d875371b6bc32ea7a2fa as credential login name
+DEBUG 2021-05-12 02:29:16.555 UTC: 	 Executing : 
+ command : myproxy-info -l d7177be87781b13fd494d875371b6bc32ea7a2fa -s myproxy.cern.ch
+ output : username: d7177be87781b13fd494d875371b6bc32ea7a2fa
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  timeleft: 527:59:56  (22.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:29:16.556 UTC: 	 My-proxy delegated.
+DEBUG 2021-05-12 02:29:16.556 UTC: 	 Retrieving username ...
+DEBUG 2021-05-12 02:29:16.556 UTC: 	 Retrieving username from CRIC...
+DEBUG 2021-05-12 02:29:21.069 UTC: 	 username is sha
+DEBUG 2021-05-12 02:29:21.075 UTC: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2021-05-12 02:29:21.076 UTC: 	 using sha_CRAB as credential login name
+DEBUG 2021-05-12 02:29:22.783 UTC: 	 Executing : 
+ command : myproxy-info -l sha_CRAB -s myproxy.cern.ch
+ output : username: sha_CRAB
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  timeleft: 0:00:00
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:29:22.784 UTC: 	 Myproxy is valid: 0
+DEBUG 2021-05-12 02:29:22.889 UTC: 	 Executing : 
+ command : openssl x509 -noout -in ~/.globus/usercert.pem -dates
+ output : notBefore=Apr 29 12:36:02 2020 GMT
+notAfter=Jun  3 12:36:02 2021 GMT
+
+ error: 
+ retcode : 0
+INFO 2021-05-12 02:29:22.890 UTC: 	 Your user certificate is going to expire in 22 days. See: https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookStartingGrid#ObtainingCert 
+INFO 2021-05-12 02:29:22.890 UTC: 	 [91mDelegating your proxy for 22 days instead of 30 [0m
+DEBUG 2021-05-12 02:29:22.890 UTC: 	 Delegating a myproxy for 528:00 hours
+DEBUG 2021-05-12 02:29:22.890 UTC: 	 using sha_CRAB as credential login name
+DEBUG 2021-05-12 02:29:35.822 UTC: 	 Executing : 
+ command : export GT_PROXY_MODE=rfc ; myproxy-init -d -n -s myproxy.cern.ch -x -R '/DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch' -x -Z '/DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch' -l 'sha_CRAB' -t 168:00 -c 528:00
+ output : Your identity: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha
+Creating proxy ................................................................................................................. Done
+Proxy Verify OK
+Your proxy is valid until: Thu Jun  3 11:29:33 2021
+A proxy valid for 528 hours (22.0 days) for user sha_CRAB now exists on myproxy.cern.ch.
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:29:35.823 UTC: 	 using sha_CRAB as credential login name
+DEBUG 2021-05-12 02:29:37.531 UTC: 	 Executing : 
+ command : myproxy-info -l sha_CRAB -s myproxy.cern.ch
+ output : username: sha_CRAB
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=sha/CN=728175/CN=Seungkyu Ha
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  timeleft: 527:59:56  (22.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2021-05-12 02:29:37.531 UTC: 	 My-proxy delegated.
+DEBUG 2021-05-12 02:29:37.531 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: d7177be87781b13fd494d875371b6bc32ea7a2fa  - validity: 21 days, 23:59:56
+  Credential exists on myproxy: username: sha_CRAB  - validity: 21 days, 23:59:56
+DEBUG 2021-05-12 02:29:37.531 UTC: 	 Command use: submit
+DEBUG 2021-05-12 02:29:37.531 UTC: 	 Options use: ['--config', <WMCore.Configuration.Configuration object at 0x7f18ee954bd0>]
+DEBUG 2021-05-12 02:29:38.960 UTC: 	 CRABClient version: v3.210323
+DEBUG 2021-05-12 02:29:38.960 UTC: 	 Instance is prod
+DEBUG 2021-05-12 02:29:38.960 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2021-05-12 02:29:38.960 UTC: 	 Command url /crabserver/prod/workflow
+DEBUG 2021-05-12 02:29:38.960 UTC: 	 Started submission
+DEBUG 2021-05-12 02:29:38.960 UTC: 	 Working on /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/src/NosiseTest/OffsetTreeMaker/crab/ZeroBias/crab_SingleNeutrino_UL18_FlatPU0to70
+DEBUG 2021-05-12 02:29:42.285 UTC: 	 Loading required information from the environment
+DEBUG 2021-05-12 02:29:42.285 UTC: 	 Found CMSSW_10_6_8_patch1 for slc7_amd64_gcc820 with base /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1
+DEBUG 2021-05-12 02:29:42.285 UTC: 	 Loading required information from the environment
+DEBUG 2021-05-12 02:29:42.285 UTC: 	 Found CMSSW_10_6_8_patch1 for slc7_amd64_gcc820 with base /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1
+DEBUG 2021-05-12 02:29:42.286 UTC: 	 UNIQUE NAME: tarUUID 0e5e3a93-b2e8-4e4b-8677-8f7427701cc8 
+DEBUG 2021-05-12 02:29:42.287 UTC: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferOutputs = True
+config.General.workArea = 'crab/ZeroBias'
+config.General.requestName = 'SingleNeutrino_UL18_FlatPU0to70'
+config.section_('JobType')
+config.JobType.psetName = 'run_miniaod_ul18_mc.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.inputFiles = ['pileup_2016.txt', 'pileup_2017.txt', 'pileup_2018.txt']
+config.JobType.outputFiles = ['Offset_Data.root']
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/SingleNeutrino/RunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
+config.Data.publication = False
+config.Data.unitsPerJob = 25000
+config.Data.splitting = 'EventAwareLumiBased'
+config.Data.inputDBS = 'global'
+config.Data.outLFNDirBase = '/store/user/sha/JERNosieStudy/'
+config.section_('Site')
+config.Site.storageSite = 'T2_KR_KNU'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2021-05-12 02:29:42.287 UTC: 	 self.config.JobType.psetName: run_miniaod_ul18_mc.py
+INFO 2021-05-12 02:29:42.288 UTC: 	 Importing CMSSW configuration run_miniaod_ul18_mc.py
+INFO 2021-05-12 02:29:44.269 UTC: 	 Finished importing CMSSW configuration run_miniaod_ul18_mc.py
+DEBUG 2021-05-12 02:29:44.269 UTC: 	 Writing CMSSW configuration to /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/src/NosiseTest/OffsetTreeMaker/crab/ZeroBias/crab_SingleNeutrino_UL18_FlatPU0to70/inputs/PSet.py
+DEBUG 2021-05-12 02:29:44.539 UTC: 	 The following EDM output files will be collected: []
+DEBUG 2021-05-12 02:29:44.539 UTC: 	 The following TFile output files will be collected: []
+WARNING 2021-05-12 02:29:44.539 UTC: 	 The following user output files (not listed as PoolOuputModule or TFileService in the CMSSW PSet) will be collected: 'Offset_Data.root'
+DEBUG 2021-05-12 02:29:44.540 UTC: 	 Loading required information from the environment
+DEBUG 2021-05-12 02:29:44.540 UTC: 	 Found CMSSW_10_6_8_patch1 for slc7_amd64_gcc820 with base /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1
+DEBUG 2021-05-12 02:29:44.540 UTC: 	 Making tarball in /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/src/NosiseTest/OffsetTreeMaker/crab/ZeroBias/crab_SingleNeutrino_UL18_FlatPU0to70/inputs/0e5e3a93-b2e8-4e4b-8677-8f7427701cc8default.tgz
+DEBUG 2021-05-12 02:29:44.541 UTC: 	 Checking directory /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/lib
+DEBUG 2021-05-12 02:29:44.541 UTC: 	 Adding directory /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/lib to tarball
+DEBUG 2021-05-12 02:29:44.574 UTC: 	 Checking directory /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/biglib
+DEBUG 2021-05-12 02:29:44.574 UTC: 	 Adding directory /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/biglib to tarball
+DEBUG 2021-05-12 02:29:44.582 UTC: 	 Checking directory /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/module
+DEBUG 2021-05-12 02:29:44.949 UTC: 	 Adding file pileup_2016.txt to tarball
+DEBUG 2021-05-12 02:29:45.957 UTC: 	 Adding file pileup_2017.txt to tarball
+DEBUG 2021-05-12 02:29:46.996 UTC: 	 Adding file pileup_2018.txt to tarball
+DEBUG 2021-05-12 02:29:48.169 UTC: 	 Uploading archive /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/src/NosiseTest/OffsetTreeMaker/crab/ZeroBias/crab_SingleNeutrino_UL18_FlatPU0to70/inputs/0e5e3a93-b2e8-4e4b-8677-8f7427701cc8default.tgz (7.545898.1 MB) to the CRAB cache. Using URI https://cmsweb.cern.ch:8443/crabcache
+DEBUG 2021-05-12 02:29:58.955 UTC: 	 Loading required information from the environment
+DEBUG 2021-05-12 02:29:58.955 UTC: 	 Found CMSSW_10_6_8_patch1 for slc7_amd64_gcc820 with base /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1
+DEBUG 2021-05-12 02:29:58.956 UTC: 	 Making tarball in /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/src/NosiseTest/OffsetTreeMaker/crab/ZeroBias/crab_SingleNeutrino_UL18_FlatPU0to70/inputs/debugFiles.tgz
+DEBUG 2021-05-12 02:29:58.969 UTC: 	 Uploading archive /d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/CMSSW_10_6_8_patch1/src/NosiseTest/OffsetTreeMaker/crab/ZeroBias/crab_SingleNeutrino_UL18_FlatPU0to70/inputs/debugFiles.tgz (2 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch:8443/crabcache
+DEBUG 2021-05-12 02:30:00.626 UTC: 	 Result uploading input files: 035be90e05f2dc4640274321c5716adf742f60c40f3a28e175df539a8fc205f7.tar.gz 
+INFO 2021-05-12 02:30:00.626 UTC: 	 Sending the request to the server at cmsweb.cern.ch
+DEBUG 2021-05-12 02:30:00.627 UTC: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 0, 'useparent': 0, 'asyncdest': 'T2_KR_KNU', 'algoargs': 25000, 'cachefilename': '035be90e05f2dc4640274321c5716adf742f60c40f3a28e175df539a8fc205f7.tar.gz', 'numcores': 1, 'addoutputfiles': ['Offset_Data.root'], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_10_6_8_patch1', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/SingleNeutrino/RunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM', 'lfn': '/store/user/sha/JERNosieStudy/', 'dryrun': 0, 'workflow': 'crab_SingleNeutrino_UL18_FlatPU0to70', 'cacheurl': u'https://cmsweb.cern.ch:8443/crabcache', 'nonprodsw': 1, 'tfileoutfiles': [], 'oneEventMode': 0, 'debugfilename': '171a66d16417b0b480124a168fddada8a6f3190bc455db2c2e57cfef5cd19115.tar.gz', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc7_amd64_gcc820', 'totalunits': 0, 'splitalgo': 'EventAwareLumiBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': ''} 
+DEBUG 2021-05-12 02:30:00.627 UTC: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=0&useparent=0&asyncdest=T2_KR_KNU&algoargs=25000&cachefilename=035be90e05f2dc4640274321c5716adf742f60c40f3a28e175df539a8fc205f7.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_10_6_8_patch1&primarydataset=&inputdata=%2FSingleNeutrino%2FRunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1%2FMINIAODSIM&lfn=%2Fstore%2Fuser%2Fsha%2FJERNosieStudy%2F&dryrun=0&workflow=crab_SingleNeutrino_UL18_FlatPU0to70&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%3A8443%2Fcrabcache&nonprodsw=1&oneEventMode=0&debugfilename=171a66d16417b0b480124a168fddada8a6f3190bc455db2c2e57cfef5cd19115.tar.gz&saveoutput=1&publication=0&jobarch=slc7_amd64_gcc820&totalunits=0&splitalgo=EventAwareLumiBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=&addoutputfiles=Offset_Data.root
+ERROR 2021-05-12 02:30:02.301 UTC: 	 Fatal error trying to connect to https://cmsweb.cern.ch:8443/crabserver/prod/workflow using maxjobruntime=1250&ignorelocality=0&savelogsflag=0&useparent=0&asyncdest=T2_KR_KNU&algoargs=25000&cachefilename=035be90e05f2dc4640274321c5716adf742f60c40f3a28e175df539a8fc205f7.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_10_6_8_patch1&primarydataset=&inputdata=%2FSingleNeutrino%2FRunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1%2FMINIAODSIM&lfn=%2Fstore%2Fuser%2Fsha%2FJERNosieStudy%2F&dryrun=0&workflow=crab_SingleNeutrino_UL18_FlatPU0to70&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%3A8443%2Fcrabcache&nonprodsw=1&oneEventMode=0&debugfilename=171a66d16417b0b480124a168fddada8a6f3190bc455db2c2e57cfef5cd19115.tar.gz&saveoutput=1&publication=0&jobarch=slc7_amd64_gcc820&totalunits=0&splitalgo=EventAwareLumiBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=&addoutputfiles=Offset_Data.root

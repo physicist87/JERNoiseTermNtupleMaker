@@ -1,0 +1,186 @@
+12-May-2021 13:27:26 KST  Initiating request to open file file:/d0/scratch/sha/Analyses/ServiceWork/JERC/MiniAOD/DataRun2018/032F9DB5-A22C-5246-A1B3-E0EB0C539A8E.root
+12-May-2021 13:27:40 KST  Successfully opened file file:/d0/scratch/sha/Analyses/ServiceWork/JERC/MiniAOD/DataRun2018/032F9DB5-A22C-5246-A1B3-E0EB0C539A8E.root
+Minimum Bias Cross Section: 69200
+Opening pileup_2018.txt...ok
+Begin processing the 1st record. Run 315357, Event 421326804, LumiSection 512 on stream 0 at 12-May-2021 13:30:29.631 KST
+Begin processing the 1001st record. Run 315357, Event 421694731, LumiSection 512 on stream 0 at 12-May-2021 13:30:37.511 KST
+Begin processing the 2001st record. Run 315357, Event 422849550, LumiSection 513 on stream 0 at 12-May-2021 13:30:40.780 KST
+Begin processing the 3001st record. Run 315357, Event 423592021, LumiSection 514 on stream 0 at 12-May-2021 13:30:43.979 KST
+Begin processing the 4001st record. Run 315357, Event 423232241, LumiSection 514 on stream 0 at 12-May-2021 13:30:47.244 KST
+Begin processing the 5001st record. Run 315357, Event 423767703, LumiSection 515 on stream 0 at 12-May-2021 13:30:50.539 KST
+Begin processing the 6001st record. Run 315357, Event 424619424, LumiSection 516 on stream 0 at 12-May-2021 13:30:53.725 KST
+Begin processing the 7001st record. Run 315357, Event 424932071, LumiSection 516 on stream 0 at 12-May-2021 13:30:56.968 KST
+Begin processing the 8001st record. Run 315357, Event 425810881, LumiSection 517 on stream 0 at 12-May-2021 13:31:00.339 KST
+Begin processing the 9001st record. Run 315357, Event 465315300, LumiSection 570 on stream 0 at 12-May-2021 13:31:03.555 KST
+Begin processing the 10001st record. Run 315357, Event 465820781, LumiSection 570 on stream 0 at 12-May-2021 13:31:08.472 KST
+Begin processing the 11001st record. Run 315357, Event 466186833, LumiSection 571 on stream 0 at 12-May-2021 13:31:11.586 KST
+Begin processing the 12001st record. Run 315357, Event 466964383, LumiSection 572 on stream 0 at 12-May-2021 13:31:14.663 KST
+Begin processing the 13001st record. Run 315357, Event 467133299, LumiSection 572 on stream 0 at 12-May-2021 13:31:17.763 KST
+Begin processing the 14001st record. Run 315357, Event 468071863, LumiSection 573 on stream 0 at 12-May-2021 13:31:20.915 KST
+Begin processing the 15001st record. Run 315357, Event 468582304, LumiSection 574 on stream 0 at 12-May-2021 13:31:24.145 KST
+Begin processing the 16001st record. Run 315357, Event 468381477, LumiSection 574 on stream 0 at 12-May-2021 13:31:27.184 KST
+Begin processing the 17001st record. Run 315357, Event 468895933, LumiSection 575 on stream 0 at 12-May-2021 13:31:30.451 KST
+Begin processing the 18001st record. Run 315357, Event 588830076, LumiSection 743 on stream 0 at 12-May-2021 13:31:33.974 KST
+Begin processing the 19001st record. Run 315357, Event 588679802, LumiSection 743 on stream 0 at 12-May-2021 13:31:38.403 KST
+Begin processing the 20001st record. Run 315357, Event 589261083, LumiSection 744 on stream 0 at 12-May-2021 13:31:41.425 KST
+Begin processing the 21001st record. Run 315357, Event 589906251, LumiSection 745 on stream 0 at 12-May-2021 13:31:44.426 KST
+Begin processing the 22001st record. Run 315357, Event 589753980, LumiSection 745 on stream 0 at 12-May-2021 13:31:47.363 KST
+Begin processing the 23001st record. Run 315357, Event 590680616, LumiSection 746 on stream 0 at 12-May-2021 13:31:50.290 KST
+Begin processing the 24001st record. Run 315357, Event 591239845, LumiSection 747 on stream 0 at 12-May-2021 13:31:53.253 KST
+Begin processing the 25001st record. Run 315357, Event 591253463, LumiSection 747 on stream 0 at 12-May-2021 13:31:56.381 KST
+Begin processing the 26001st record. Run 315357, Event 591785348, LumiSection 748 on stream 0 at 12-May-2021 13:32:01.037 KST
+Begin processing the 27001st record. Run 315557, Event 52216025, LumiSection 45 on stream 0 at 12-May-2021 13:32:11.158 KST
+Begin processing the 28001st record. Run 315557, Event 52525687, LumiSection 45 on stream 0 at 12-May-2021 13:32:17.690 KST
+Begin processing the 29001st record. Run 315557, Event 53542166, LumiSection 46 on stream 0 at 12-May-2021 13:32:21.583 KST
+Begin processing the 30001st record. Run 315557, Event 54087302, LumiSection 46 on stream 0 at 12-May-2021 13:32:25.662 KST
+Begin processing the 31001st record. Run 315557, Event 54872890, LumiSection 47 on stream 0 at 12-May-2021 13:32:29.802 KST
+Begin processing the 32001st record. Run 315557, Event 54591311, LumiSection 47 on stream 0 at 12-May-2021 13:32:33.854 KST
+Begin processing the 33001st record. Run 315557, Event 55550294, LumiSection 48 on stream 0 at 12-May-2021 13:32:37.833 KST
+Begin processing the 34001st record. Run 315557, Event 56090675, LumiSection 48 on stream 0 at 12-May-2021 13:32:41.841 KST
+Begin processing the 35001st record. Run 315973, Event 27838264, LumiSection 53 on stream 0 at 12-May-2021 13:32:55.818 KST
+Begin processing the 36001st record. Run 315973, Event 27829271, LumiSection 53 on stream 0 at 12-May-2021 13:33:01.080 KST
+Begin processing the 37001st record. Run 315973, Event 29587080, LumiSection 54 on stream 0 at 12-May-2021 13:33:05.034 KST
+Begin processing the 38001st record. Run 315973, Event 30819418, LumiSection 55 on stream 0 at 12-May-2021 13:33:08.924 KST
+Begin processing the 39001st record. Run 315973, Event 30453057, LumiSection 55 on stream 0 at 12-May-2021 13:33:12.032 KST
+Begin processing the 40001st record. Run 315973, Event 31111643, LumiSection 56 on stream 0 at 12-May-2021 13:33:14.024 KST
+Begin processing the 41001st record. Run 315973, Event 32262459, LumiSection 57 on stream 0 at 12-May-2021 13:33:16.248 KST
+Begin processing the 42001st record. Run 315973, Event 31369848, LumiSection 57 on stream 0 at 12-May-2021 13:33:19.862 KST
+Begin processing the 43001st record. Run 315973, Event 33630990, LumiSection 58 on stream 0 at 12-May-2021 13:33:25.642 KST
+Begin processing the 44001st record. Run 316766, Event 1576777381, LumiSection 1142 on stream 0 at 12-May-2021 13:33:47.721 KST
+Begin processing the 45001st record. Run 316766, Event 1576554375, LumiSection 1142 on stream 0 at 12-May-2021 13:33:52.279 KST
+Begin processing the 46001st record. Run 316766, Event 1579438568, LumiSection 1144 on stream 0 at 12-May-2021 13:33:55.636 KST
+Begin processing the 47001st record. Run 316766, Event 1579301341, LumiSection 1144 on stream 0 at 12-May-2021 13:33:58.894 KST
+Begin processing the 48001st record. Run 316766, Event 1580777662, LumiSection 1145 on stream 0 at 12-May-2021 13:34:02.350 KST
+Begin processing the 49001st record. Run 316766, Event 1582596429, LumiSection 1146 on stream 0 at 12-May-2021 13:34:05.665 KST
+Begin processing the 50001st record. Run 316766, Event 1582575539, LumiSection 1146 on stream 0 at 12-May-2021 13:34:08.920 KST
+Begin processing the 51001st record. Run 316766, Event 1582997995, LumiSection 1147 on stream 0 at 12-May-2021 13:34:13.518 KST
+Begin processing the 52001st record. Run 316766, Event 1583312708, LumiSection 1147 on stream 0 at 12-May-2021 13:34:16.130 KST
+Begin processing the 53001st record. Run 316877, Event 69063780, LumiSection 43 on stream 0 at 12-May-2021 13:34:23.627 KST
+Begin processing the 54001st record. Run 316877, Event 70094300, LumiSection 44 on stream 0 at 12-May-2021 13:34:27.896 KST
+Begin processing the 55001st record. Run 316877, Event 69746793, LumiSection 44 on stream 0 at 12-May-2021 13:34:33.336 KST
+Begin processing the 56001st record. Run 316877, Event 71815935, LumiSection 45 on stream 0 at 12-May-2021 13:34:38.539 KST
+Begin processing the 57001st record. Run 316877, Event 70860558, LumiSection 45 on stream 0 at 12-May-2021 13:34:42.415 KST
+Begin processing the 58001st record. Run 316877, Event 73141650, LumiSection 46 on stream 0 at 12-May-2021 13:34:46.210 KST
+Begin processing the 59001st record. Run 316877, Event 73612667, LumiSection 46 on stream 0 at 12-May-2021 13:34:49.966 KST
+Begin processing the 60001st record. Run 316877, Event 76864340, LumiSection 48 on stream 0 at 12-May-2021 13:34:53.867 KST
+Begin processing the 61001st record. Run 316928, Event 165970393, LumiSection 143 on stream 0 at 12-May-2021 13:34:59.716 KST
+Begin processing the 62001st record. Run 316928, Event 166275159, LumiSection 143 on stream 0 at 12-May-2021 13:35:04.894 KST
+Begin processing the 63001st record. Run 316928, Event 171723602, LumiSection 147 on stream 0 at 12-May-2021 13:35:08.704 KST
+Begin processing the 64001st record. Run 316928, Event 171454984, LumiSection 147 on stream 0 at 12-May-2021 13:35:12.427 KST
+Begin processing the 65001st record. Run 316928, Event 174256856, LumiSection 148 on stream 0 at 12-May-2021 13:35:16.290 KST
+Begin processing the 66001st record. Run 316928, Event 175774482, LumiSection 149 on stream 0 at 12-May-2021 13:35:20.127 KST
+Begin processing the 67001st record. Run 316928, Event 175028031, LumiSection 149 on stream 0 at 12-May-2021 13:35:23.919 KST
+Begin processing the 68001st record. Run 316928, Event 176574288, LumiSection 150 on stream 0 at 12-May-2021 13:35:29.233 KST
+Begin processing the 69001st record. Run 316928, Event 176396846, LumiSection 150 on stream 0 at 12-May-2021 13:35:33.508 KST
+Begin processing the 70001st record. Run 316928, Event 200362366, LumiSection 165 on stream 0 at 12-May-2021 13:35:37.442 KST
+Begin processing the 71001st record. Run 316928, Event 201168397, LumiSection 166 on stream 0 at 12-May-2021 13:35:41.462 KST
+Begin processing the 72001st record. Run 316928, Event 202300139, LumiSection 166 on stream 0 at 12-May-2021 13:35:46.718 KST
+Begin processing the 73001st record. Run 316928, Event 205504679, LumiSection 168 on stream 0 at 12-May-2021 13:35:50.448 KST
+Begin processing the 74001st record. Run 316928, Event 205672158, LumiSection 168 on stream 0 at 12-May-2021 13:35:54.293 KST
+Begin processing the 75001st record. Run 316928, Event 206208603, LumiSection 169 on stream 0 at 12-May-2021 13:35:58.066 KST
+Begin processing the 76001st record. Run 316928, Event 206750368, LumiSection 169 on stream 0 at 12-May-2021 13:36:01.831 KST
+Begin processing the 77001st record. Run 316928, Event 207594709, LumiSection 170 on stream 0 at 12-May-2021 13:36:05.619 KST
+Begin processing the 78001st record. Run 316944, Event 735870238, LumiSection 598 on stream 0 at 12-May-2021 13:36:11.543 KST
+Begin processing the 79001st record. Run 316944, Event 735512984, LumiSection 598 on stream 0 at 12-May-2021 13:36:17.004 KST
+Begin processing the 80001st record. Run 316944, Event 736183861, LumiSection 599 on stream 0 at 12-May-2021 13:36:20.881 KST
+Begin processing the 81001st record. Run 316944, Event 737072355, LumiSection 599 on stream 0 at 12-May-2021 13:36:24.726 KST
+Begin processing the 82001st record. Run 316944, Event 738468685, LumiSection 600 on stream 0 at 12-May-2021 13:36:30.098 KST
+Begin processing the 83001st record. Run 316944, Event 739993526, LumiSection 601 on stream 0 at 12-May-2021 13:36:34.021 KST
+Begin processing the 84001st record. Run 316944, Event 739815255, LumiSection 601 on stream 0 at 12-May-2021 13:36:37.990 KST
+Begin processing the 85001st record. Run 316944, Event 778424599, LumiSection 626 on stream 0 at 12-May-2021 13:36:43.449 KST
+Begin processing the 86001st record. Run 316944, Event 778562840, LumiSection 626 on stream 0 at 12-May-2021 13:36:46.483 KST
+Begin processing the 87001st record. Run 316944, Event 1284864957, LumiSection 973 on stream 0 at 12-May-2021 13:36:50.331 KST
+Begin processing the 88001st record. Run 316944, Event 1286033034, LumiSection 974 on stream 0 at 12-May-2021 13:36:55.355 KST
+Begin processing the 89001st record. Run 316944, Event 1285242428, LumiSection 974 on stream 0 at 12-May-2021 13:36:58.824 KST
+Begin processing the 90001st record. Run 316944, Event 1286813169, LumiSection 975 on stream 0 at 12-May-2021 13:37:02.245 KST
+Begin processing the 91001st record. Run 316944, Event 1287768555, LumiSection 975 on stream 0 at 12-May-2021 13:37:05.601 KST
+Begin processing the 92001st record. Run 316944, Event 2369962107, LumiSection 1753 on stream 0 at 12-May-2021 13:37:09.673 KST
+Begin processing the 93001st record. Run 316944, Event 2371895164, LumiSection 1754 on stream 0 at 12-May-2021 13:37:12.608 KST
+Begin processing the 94001st record. Run 316944, Event 2371070751, LumiSection 1754 on stream 0 at 12-May-2021 13:37:15.498 KST
+12-May-2021 13:37:18 KST  Closed file file:/d0/scratch/sha/Analyses/ServiceWork/JERC/MiniAOD/DataRun2018/032F9DB5-A22C-5246-A1B3-E0EB0C539A8E.root
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 94567 passed = 50848 failed = 43719
+
+TrigReport ---------- Path   Summary ------------
+TrigReport  Trig Bit#   Executed     Passed     Failed      Error Name
+TrigReport     1    0      94567      50848      43719          0 p
+
+TrigReport -------End-Path   Summary ------------
+TrigReport  Trig Bit#   Executed     Passed     Failed      Error Name
+
+TrigReport ---------- Modules in Path: p ------------
+TrigReport  Trig Bit#    Visited     Passed     Failed      Error Name
+TrigReport     1    0      94567      51822      42745          0 HLTZeroBias
+TrigReport     1    1      51822      50850        972          0 CSCTightHaloFilter
+TrigReport     1    2      50850      50850          0          0 HBHENoiseFilterResultProducer
+TrigReport     1    3      50850      50848          2          0 ApplyBaselineHBHENoiseFilter
+TrigReport     1    4      50848      50848          0          0 pf
+
+TrigReport ---------- Module Summary ------------
+TrigReport    Visited   Executed     Passed     Failed      Error Name
+TrigReport      50850      50850      50848          2          0 ApplyBaselineHBHENoiseFilter
+TrigReport      51822      51822      50850        972          0 CSCTightHaloFilter
+TrigReport      50850      50850      50850          0          0 HBHENoiseFilterResultProducer
+TrigReport      94567      94567      51822      42745          0 HLTZeroBias
+TrigReport      94567      94567      94567          0          0 TriggerResults
+TrigReport      94567      94567      94567          0          0 p
+TrigReport      50848      50848      50848          0          0 pf
+
+TimeReport ---------- Event  Summary ---[sec]----
+TimeReport       event loop CPU/event = 0.003839
+TimeReport      event loop Real/event = 0.005983
+TimeReport     sum Streams Real/event = 0.003726
+TimeReport efficiency CPU/Real/thread = 0.641683
+
+TimeReport ---------- Path   Summary ---[Real sec]----
+TimeReport  per event     per exec  Name
+TimeReport   0.003606     0.003606  p
+TimeReport  per event     per exec  Name
+
+TimeReport -------End-Path   Summary ---[Real sec]----
+TimeReport  per event     per exec  Name
+TimeReport  per event     per exec  Name
+
+TimeReport ---------- Modules in Path: p ---[Real sec]----
+TimeReport  per event    per visit  Name
+TimeReport   0.000005     0.000005  HLTZeroBias
+TimeReport   0.000004     0.000007  CSCTightHaloFilter
+TimeReport   0.000006     0.000012  HBHENoiseFilterResultProducer
+TimeReport   0.000001     0.000001  ApplyBaselineHBHENoiseFilter
+TimeReport   0.000700     0.001301  pf
+TimeReport  per event    per visit  Name
+
+TimeReport ---------- Module Summary ---[Real sec]----
+TimeReport  per event     per exec    per visit  Name
+TimeReport   0.000001     0.000001     0.000001  ApplyBaselineHBHENoiseFilter
+TimeReport   0.000004     0.000007     0.000007  CSCTightHaloFilter
+TimeReport   0.000006     0.000012     0.000012  HBHENoiseFilterResultProducer
+TimeReport   0.000005     0.000005     0.000005  HLTZeroBias
+TimeReport   0.000003     0.000003     0.000003  TriggerResults
+TimeReport   0.000005     0.000005     0.000005  p
+TimeReport   0.000700     0.001301     0.001301  pf
+TimeReport  per event     per exec    per visit  Name
+
+T---Report end!
+
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 fileAction           -s file_close                             1        1
+    2 fileAction           -s file_open                              2        2
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 fileAction           PostGlobalEndRun                  
+    2 fileAction           pre-events       pre-events       
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+System                  3                   3
+
+dropped waiting message count 0

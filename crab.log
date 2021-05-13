@@ -1,0 +1,5 @@
+DEBUG 2021-05-12 02:36:51.729 UTC: 	 CRAB Client version: v3.210323
+DEBUG 2021-05-12 02:36:51.730 UTC: 	 Running on: Linux cms01.knu.ac.kr 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux - CentOS Linux 7 (Core)
+DEBUG 2021-05-12 02:36:51.730 UTC: 	 Executing command: 'submit'
+DEBUG 2021-05-12 02:36:51.730 UTC: 	 Found CRAB cache file /u/user/sha/.crab3
+DEBUG 2021-05-12 02:36:51.733 UTC: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).

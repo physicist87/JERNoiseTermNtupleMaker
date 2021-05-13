@@ -1,0 +1,26 @@
+Failed open file in the dCache.
+%MSG-w StorageFactory::stagein():  PoolSource:source@sourceConstruction  07-Apr-2021 17:15:12 KST pre-events
+Failed to stage in file 'dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/mc/RunIISummer19UL17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/260000/01E437E0-B757-5B45-950F-CF648C57CE32.root' because:
+An exception of category 'FileStageInError' occurred while
+   [0] Calling DCacheStorageMaker::stagein()
+Exception Message:
+Cannot stage in file 'dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/mc/RunIISummer19UL17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/260000/01E437E0-B757-5B45-950F-CF648C57CE32.root', error was: "No such file or directory" (dc_errno=30)
+
+%MSG
+07-Apr-2021 17:15:12 KST  Initiating request to open file dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/mc/RunIISummer19UL17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/260000/01E437E0-B757-5B45-950F-CF648C57CE32.root
+Failed open file in the dCache.
+07-Apr-2021 17:15:13 KST  Fallback request to file root://xrootd-cms.infn.it:1194//store/mc/RunIISummer19UL17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/260000/01E437E0-B757-5B45-950F-CF648C57CE32.root
+%MSG-w XrdAdaptor:  file_open 07-Apr-2021 17:15:33 KST pre-events
+Data is served from kfki.hu instead of original site infn.it
+%MSG
+07-Apr-2021 17:15:57 KST  Successfully opened file root://xrootd-cms.infn.it:1194//store/mc/RunIISummer19UL17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/260000/01E437E0-B757-5B45-950F-CF648C57CE32.root
+%MSG-w XrdAdaptor:  (NoModuleName) 07-Apr-2021 17:16:08 KST pre-events
+Data is now served from kfki.hu, T2_US_Caltech instead of previous kfki.hu
+%MSG
+07-Apr-2021 17:16:08 KST  Closed file root://xrootd-cms.infn.it:1194//store/mc/RunIISummer19UL17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/260000/01E437E0-B757-5B45-950F-CF648C57CE32.root
+----- Begin Fatal Exception 07-Apr-2021 17:16:08 KST-----------------------
+An exception of category 'PluginNotFound' occurred while
+   [0] Constructing the EventProcessor
+Exception Message:
+Unable to find plugin 'OffsetTreeMaker' in category 'CMS EDM Framework Module'. Please check spelling of name.
+----- End Fatal Exception -------------------------------------------------
