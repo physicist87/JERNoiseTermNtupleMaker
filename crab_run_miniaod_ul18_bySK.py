@@ -16,7 +16,10 @@ config.JobType.inputFiles = ["pileup_2016.txt", "pileup_2017.txt", "pileup_2018.
 config.JobType.outputFiles = ["Offset_MC.root"]
 
 config.Data.inputDBS = 'global'
-config.Data.inputDataset = '/SingleNeutrino/RunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
+#config.Data.inputDataset = '/SingleNeutrino/RunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
+config.Data.inputDataset = '/SingleNeutrino/RunIISummer19UL18MiniAODv2-FlatPU0to70_UL18HEMreReco_106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
+#config.Data.inputDataset = '/TTbar_13TeV_TuneCP5_Pythia8/RunIISummer19UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
+#config.Data.inputDataset = '/QCD_Pt-15to7000_TuneCP5_Flat2018_13TeV_pythia8/RunIISummer19UL18MiniAODv2-FlatPU0to70_106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
 
 
 config.section_('Data')
@@ -28,7 +31,9 @@ config.Data.unitsPerJob = 25000
 config.section_('User')
 config.section_('Site')
 config.Site.storageSite = 'T3_KR_KNU'
-config.Data.outLFNDirBase = '/store/user/sha/JERNosieStudy/'
+config.Data.outLFNDirBase = '/store/user/sha/JERNosieStudy/SingleNeutrino-HEMreReco'
+#config.Data.outLFNDirBase = '/store/user/sha/JERNosieStudy/TTbar'
+#config.Data.outLFNDirBase = '/store/user/sha/JERNosieStudy/QCD'
 
 
 

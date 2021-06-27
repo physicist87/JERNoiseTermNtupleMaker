@@ -50,7 +50,7 @@ else:
   # ZeroBias Trigger
   process.HLTZeroBias =cms.EDFilter("HLTHighLevel",
     TriggerResultsTag = cms.InputTag("TriggerResults","","HLT"),
-    HLTPaths = cms.vstring('HLT_ZeroBias_part*','HLT_ZeroBias_v*'),
+    HLTPaths = cms.vstring('HLT_ZeroBias_part*','HLT_ZeroBias_v*'), ## Zero bias trigger??
     eventSetupPathsKey = cms.string(''),
     andOr = cms.bool(True), #----- True = OR, False = AND between the HLTPaths
     throw = cms.bool(False)
@@ -75,7 +75,7 @@ process.pf = cms.EDAnalyzer("OffsetTreeMaker",
 #    puFileName = cms.string("pileup_2017.txt"),
     puFileName = cms.string("pileup_2018.txt"),
     isMC = isMC,
-    writeCands = cms.bool(False),
+    writeCands = cms.bool(True),
     writeParticles = cms.bool(False),
     #trackTag = cms.InputTag("generalTracks"),
     Generator = cms.InputTag("generator"),
@@ -89,7 +89,16 @@ process.pf = cms.EDAnalyzer("OffsetTreeMaker",
     rhoCCTag = cms.InputTag("fixedGridRhoFastjetCentralChargedPileUp"),
     rhoCentralTag = cms.InputTag("fixedGridRhoFastjetCentral"),
     rhoCentralCaloTag = cms.InputTag("fixedGridRhoFastjetCentralCalo"),
-    pfJetTag = cms.InputTag("slimmedJets")
+    pfJetTag = cms.InputTag("slimmedJets"),
+    trigList        = cms.vstring(
+                                                        ### SingleMuon ###
+                                                        'HLT_ZeroBias_part',
+                                                       'HLT_ZeroBias_v',
+                                                        ),
+
+    bits  = cms.InputTag("TriggerResults","","HLT"),
+    prescales        = cms.InputTag("patTrigger"),
+    genJetTag = cms.InputTag("slimmedGenJets")
 )
 
 process.myseq = cms.Sequence( process.pf )

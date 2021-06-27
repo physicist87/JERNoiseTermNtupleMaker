@@ -11,7 +11,7 @@ process.load("FWCore.MessageService.MessageLogger_cfi")
 process.MessageLogger.destinations = ['cout', 'cerr']
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(True) )
 process.options.allowUnscheduled = cms.untracked.bool(True)
 
@@ -23,7 +23,8 @@ readFiles.extend( [
   #'/store/data/Run2017B/ZeroBias/MINIAOD/09Aug2019_UL2017-v1/260000/0228BC4C-26B0-C04E-8BD3-349FAEC6AABF.root'
   #'/store/data/Run2018A/ZeroBias/MINIAOD/12Nov2019_UL2018-v2/100000/032F9DB5-A22C-5246-A1B3-E0EB0C539A8E.root'
   #'file:./032F9DB5-A22C-5246-A1B3-E0EB0C539A8E.root'# Data
-  'file:/d0/scratch/sha/Analyses/ServiceWork/JERC/MiniAOD/SingleNeutrino_UL18FlatPU0to70/006AF999-107E-554D-8EEB-064BE2F2F05C.root'# Data
+  'file:/d0/scratch/sha/Analyses/ServiceWork/JERC/MiniAOD/SingleNeutrino_UL18FlatPU0to70/006AF999-107E-554D-8EEB-064BE2F2F05C.root'# MC
+  #'file:/pnfs/knu.ac.kr/data/cms/store/user/sha/MiniAODSample/MC/ULSummer192018/E41F81F4-BEE7-0947-861A-7D83A48092AD.root'# TTBar
   #'/store/data/Run2016B/ZeroBias/MINIAOD/21Feb2020_ver2_UL2016_HIPM-v1/240000/109E3350-A8F4-6E4F-B4EE-B07695A21179.root' 
 ] );
 
@@ -79,7 +80,8 @@ process.pf = cms.EDAnalyzer("OffsetTreeMaker",
     isMC = isMC,
     #writeCands = cms.bool(False),
     writeCands = cms.bool(True),
-    writeParticles = cms.bool(False),
+    #writeParticles = cms.bool(False),
+    writeParticles = cms.bool(True),
     #trackTag = cms.InputTag("generalTracks"),
     Generator = cms.InputTag("generator"),
     GenParticles = cms.InputTag("prunedGenParticles"),
@@ -92,7 +94,16 @@ process.pf = cms.EDAnalyzer("OffsetTreeMaker",
     rhoCCTag = cms.InputTag("fixedGridRhoFastjetCentralChargedPileUp"),
     rhoCentralTag = cms.InputTag("fixedGridRhoFastjetCentral"),
     rhoCentralCaloTag = cms.InputTag("fixedGridRhoFastjetCentralCalo"),
-    pfJetTag = cms.InputTag("slimmedJets")
+    pfJetTag = cms.InputTag("slimmedJets"),
+    trigList        = cms.vstring(
+                                                        ### SingleMuon ###
+                                                        'HLT_ZeroBias_part',
+                                                       'HLT_ZeroBias_v',
+                                                        ),
+
+    bits  = cms.InputTag("TriggerResults","","HLT"),
+    prescales        = cms.InputTag("patTrigger"),
+    genJetTag = cms.InputTag("slimmedGenJets")
 )
 
 process.myseq = cms.Sequence( process.pf )
