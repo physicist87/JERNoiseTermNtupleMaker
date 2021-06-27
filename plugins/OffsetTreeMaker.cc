@@ -38,6 +38,11 @@
 #include "SimDataFormats/GeneratorProducts/interface/GenEventInfoProduct.h"
 #include "DataFormats/JetReco/interface/PFJet.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
+/// needed for trigger 
+#include "FWCore/Common/interface/TriggerNames.h"
+#include "DataFormats/Common/interface/TriggerResults.h"
+#include "DataFormats/PatCandidates/interface/TriggerPath.h"
+#include "DataFormats/PatCandidates/interface/PackedTriggerPrescales.h"
 #include "parsePileUpJSON2.h"
 #include <vector>
 #include "TMath.h"
@@ -56,11 +61,13 @@ const int PHI_BINS_GME = 11;
 const double GRID_AREA = (10./ETA_BINS_GME)*(2*M_PI/PHI_BINS_GME);
 const int MAXNPV = 150;
 const int MAXJETS = 4;
+const int MAXGENJETS = 4;
 
 /// for Data File Dist...by Check out for 2018 DATA///
 float muWeight_Run2017D[80] = { 0.000000,0.000000,0.000002,0.000019,0.000066,0.000127,0.000154,0.000164,0.000159,0.000164,0.000201,0.000251,0.000383,0.000707,0.001715,0.005040,0.012966,0.023951,0.033498,0.040964,0.046665,0.049625,0.051241,0.054287,0.059305,0.064711,0.068642,0.070111,0.068788,0.064589,0.057980,0.049998,0.041697,0.033764,0.026589,0.020402,0.015300,0.011246,0.008106,0.005715,0.003926,0.002617,0.001687,0.001050,0.000631,0.000366,0.000206,0.000112,0.000058,0.000030,0.000014,0.000007,0.000003,0.000001,0.000001,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000 };
 float muWeight_Run2017E[80] = { 0.000000,0.000001,0.000010,0.000019,0.000041,0.000084,0.000103,0.000134,0.000142,0.000149,0.000179,0.000347,0.000791,0.001573,0.002727,0.004371,0.006719,0.009951,0.014011,0.018429,0.022376,0.025295,0.027196,0.028305,0.028876,0.029197,0.029491,0.029891,0.030495,0.031348,0.032376,0.033378,0.034091,0.034331,0.034082,0.033479,0.032694,0.031851,0.031002,0.030153,0.029294,0.028422,0.027538,0.026641,0.025709,0.024696,0.023538,0.022170,0.020548,0.018665,0.016562,0.014324,0.012059,0.009878,0.007876,0.006118,0.004637,0.003436,0.002494,0.001777,0.001247,0.000863,0.000591,0.000401,0.000271,0.000182,0.000123,0.000082,0.000055,0.000037,0.000025,0.000017,0.000012,0.000008,0.000005,0.000004,0.000002,0.000002,0.000001,0.000001 };
 
+/// Bin for eta 
 float etabins[ETA_BINS+1] =
   {-5.191, -4.889, -4.716, -4.538, -4.363, -4.191, -4.013, -3.839, -3.664, -3.489, -3.314, -3.139, -2.964, -2.853, -2.65,
    -2.5, -2.322, -2.172, -2.043, -1.93, -1.83, -1.74, -1.653, -1.566, -1.479, -1.392, -1.305, -1.218, -1.131, -1.044, -0.957,
@@ -69,8 +76,10 @@ float etabins[ETA_BINS+1] =
    1.566, 1.653, 1.74, 1.83, 1.93, 2.043, 2.172, 2.322, 2.5, 2.65, 2.853, 2.964, 3.139, 3.314, 3.489, 3.664, 3.839, 4.013,
    4.191, 4.363, 4.538, 4.716, 4.889, 5.191};
 
+/// Bin for phi 
 float phibins[PHI_BINS_GME+1] = 
   {-3.142, -2.57, -1.999, -1.428, -0.8568, -0.2856, 0.2856, 0.8568, 1.428, 1.999, 2.57, 3.142};
+
 class OffsetTreeMaker : public edm::EDAnalyzer {
   public:
     explicit OffsetTreeMaker(const edm::ParameterSet&);
@@ -119,20 +128,34 @@ class OffsetTreeMaker : public edm::EDAnalyzer {
 
     float ht;
     int nJets;
-    float jet_eta[MAXJETS], jet_phi[MAXJETS], jet_pt[MAXJETS], jet_area[MAXJETS];
-    float jet_ch[MAXJETS], jet_nh[MAXJETS], jet_ne[MAXJETS], jet_hfh[MAXJETS], jet_hfe[MAXJETS], jet_lep[MAXJETS];
+    vector<float> v_jet_eta, v_jet_phi, v_jet_pt, v_jet_area;
+    vector<float> v_jet_ch, v_jet_nh, v_jet_ne, v_jet_hfh, v_jet_hfe, v_jet_lep;
+//    float jet_eta[MAXJETS], jet_phi[MAXJETS], jet_pt[MAXJETS], jet_area[MAXJETS];
+//    float jet_ch[MAXJETS], jet_nh[MAXJETS], jet_ne[MAXJETS], jet_hfh[MAXJETS], jet_hfe[MAXJETS], jet_lep[MAXJETS];
 
+    float genht;
+    int nGenJets;
+    vector<float> v_genjet_eta, v_genjet_phi, v_genjet_pt, v_genjet_area;
+
+    /// varialbes for particle flow object ///
     vector<int> pf_type;
-    vector<float> pf_pt, pf_eta, pf_phi, pf_et;
+    vector<float> pf_pt, pf_eta, pf_phi, pf_et, pf_energy, pf_m;
     vector<int> particle_id, particle_charge;
     vector<float> particle_et, particle_pt, particle_eta, particle_phi;
     vector<float> particle_et_scaled;
     vector<bool> isPromptFinalState;
 
-    TString RootFileName_;
-    string puFileName_;
-    int numSkip_;
-    bool isMC_, writeCands_, writeParticles_;
+
+    /// Trigger information // 
+    typedef std::vector<pat::TriggerPath>  TriggerPathCollection;
+    std::vector<bool> trigger_pass;
+    std::vector<bool> trigger_run;
+    std::vector<bool> trigger_error;
+    std::vector<string> trigger_name;
+    std::vector<unsigned int> trigger_prescale;
+    bool trigPass_;
+    bool trigRun_;
+    bool trigError_;
 
     edm::EDGetTokenT< vector<reco::Vertex> > pvTag_;
 //    edm::EDGetTokenT< vector<reco::Track> > trackTag_;
@@ -147,6 +170,17 @@ class OffsetTreeMaker : public edm::EDAnalyzer {
     edm::EDGetTokenT<double> rhoCentralTag_;
     edm::EDGetTokenT<double> rhoCentralCaloTag_;
     edm::EDGetTokenT< vector<pat::Jet> > pfJetTag_;
+    edm::EDGetTokenT< vector<reco::GenJet> > genJetTag_;
+    /// variables for trigger ///
+    std::vector<std::string> triggerList;
+    edm::EDGetTokenT<edm::TriggerResults> triggerBits_;
+    edm::EDGetTokenT<pat::PackedTriggerPrescales> triggerPrescales_;
+
+
+    TString RootFileName_;
+    string puFileName_;
+    int numSkip_;
+    bool isMC_, writeCands_, writeParticles_;
 };
 
 OffsetTreeMaker::OffsetTreeMaker(const edm::ParameterSet& iConfig)
@@ -170,6 +204,11 @@ OffsetTreeMaker::OffsetTreeMaker(const edm::ParameterSet& iConfig)
   rhoCentralTag_ = consumes<double>( iConfig.getParameter<edm::InputTag>("rhoCentralTag") );
   rhoCentralCaloTag_ = consumes<double>( iConfig.getParameter<edm::InputTag>("rhoCentralCaloTag") );
   pfJetTag_ = consumes< vector<pat::Jet> >( iConfig.getParameter<edm::InputTag>("pfJetTag") );
+  triggerList       = iConfig.getParameter<std::vector<std::string>>("trigList") ;
+  triggerBits_      = consumes<edm::TriggerResults>(iConfig.getParameter<edm::InputTag>("bits"));
+  triggerPrescales_ = consumes<pat::PackedTriggerPrescales>(iConfig.getParameter<edm::InputTag>("prescales"));
+  genJetTag_ = consumes< vector<reco::GenJet> >( iConfig.getParameter<edm::InputTag>("genJetTag") );
+
 }
 
 // ------------ method called once each job just before starting event loop  ------------
@@ -210,6 +249,8 @@ void  OffsetTreeMaker::beginJob() {
     tree->Branch("pf_eta",  "std::vector<float>", &pf_eta);
     tree->Branch("pf_phi",  "std::vector<float>", &pf_phi);
     tree->Branch("pf_et",  "std::vector<float>", &pf_et);
+    tree->Branch("pf_energy",  "std::vector<float>", &pf_energy);
+    tree->Branch("pf_m",  "std::vector<float>", &pf_m);
   }
 
   tree->Branch("mu", &mu, "mu/F");
@@ -278,7 +319,21 @@ void  OffsetTreeMaker::beginJob() {
 
   tree->Branch("ht", &ht, "ht/F");
   tree->Branch("nJets",    &nJets,   "nJets/I");
-  tree->Branch("jet_eta",  jet_eta,  "jet_eta[nJets]/F");
+
+  tree->Branch("jet_eta",  "std::vector<float>", &v_jet_eta  );
+  tree->Branch("jet_phi",  "std::vector<float>", &v_jet_phi  );
+  tree->Branch("jet_pt",   "std::vector<float>", &v_jet_pt   );
+  tree->Branch("jet_area", "std::vector<float>", &v_jet_area );
+
+  tree->Branch("jet_ch","std::vector<float>",  &v_jet_ch);
+  tree->Branch("jet_nh","std::vector<float>", &v_jet_nh);
+  tree->Branch("jet_ne","std::vector<float>", &v_jet_ne);
+  tree->Branch("jet_hfh","std::vector<float>", &v_jet_hfh);
+  tree->Branch("jet_hfe","std::vector<float>", &v_jet_hfe);
+
+
+
+/*  tree->Branch("jet_eta",  jet_eta,  "jet_eta[nJets]/F");
   tree->Branch("jet_phi",  jet_phi,  "jet_phi[nJets]/F");
   tree->Branch("jet_pt",   jet_pt,   "jet_pt[nJets]/F");
   tree->Branch("jet_area", jet_area, "jet_area[nJets]/F");
@@ -289,6 +344,21 @@ void  OffsetTreeMaker::beginJob() {
   tree->Branch("jet_hfh", jet_hfh, "jet_hfh[nJets]/F");
   tree->Branch("jet_hfe", jet_hfe, "jet_hfe[nJets]/F");
   tree->Branch("jet_lep", jet_lep, "jet_lep[nJets]/F");
+*/
+  ///Trigger ///
+  tree->Branch("trigger_pass", "std::vector<bool>",   &trigger_pass);
+  tree->Branch("trigger_error", "std::vector<bool>",   &trigger_error);
+  tree->Branch("trigger_run", "std::vector<bool>",   &trigger_run);
+  tree->Branch("trigger_prescale", "std::vector<unsigned int>",   &trigger_prescale);
+  tree->Branch("trigger_name", "std::vector<string>",   &trigger_name);
+
+  /// Gen. Jet ///
+  tree->Branch("genht", &genht, "genht/F");
+  tree->Branch("nGenJets",    &nGenJets,   "nGenJets/I");
+  tree->Branch("genjet_eta",  "std::vector<float>", &v_genjet_eta );
+  tree->Branch("genjet_phi",  "std::vector<float>", &v_genjet_phi );
+  tree->Branch("genjet_pt",   "std::vector<float>", &v_genjet_pt );
+  tree->Branch("genjet_area", "std::vector<float>", &v_genjet_area );
 }
 
 // ------------ method called for each event  ------------
@@ -314,13 +384,12 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
 
     mu = getAvgPU( run, lumi );
     int muI = mu;
-    /// I think this part is for 2017... 
+    /// I think this part is for 2017... I don't understand why we reweight mu for data ??? 
     if (run>=302031 && run<=302663) muWeight = muWeight_Run2017D[muI];
     else if (run>=303824 && run<=304797) muWeight = muWeight_Run2017E[muI];
     else muWeight = 1;
     if (mu==0) return;
   }
-  //cout << "muWeight : " << muWeight << endl;
 //------------ Primary Vertices ------------//
 
   edm::Handle< vector<reco::Vertex> > primaryVertices;
@@ -488,7 +557,7 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
   memset(et_gme,        0, sizeof(et_gme));
   memset(et_twopi,      0, sizeof(et_twopi));
 
-  pf_type.clear(); pf_pt.clear(); pf_eta.clear(); pf_phi.clear(); pf_et.clear();
+  pf_type.clear(); pf_pt.clear(); pf_eta.clear(); pf_phi.clear(); pf_et.clear(); pf_energy.clear(); pf_m.clear();
   h2_GME->Reset();
   h2_finnereta->Reset();
   h2_twopi->Reset();
@@ -543,6 +612,8 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
       pf_eta.push_back( i_pf->eta() );
       pf_phi.push_back( i_pf->phi() );
       pf_et.push_back( i_pf->et() );
+      pf_energy.push_back( i_pf->energy() );
+      pf_m.push_back( i_pf->mass() );
     }
   }
 
@@ -647,24 +718,116 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
     if (pt > 10) ht += pt;
   }
 
-  pfJets->size()<MAXJETS ? nJets = pfJets->size() : nJets = MAXJETS;
+  //pfJets->size()<MAXJETS ? nJets = pfJets->size() : nJets = MAXJETS;
+  nJets = pfJets->size();
+  v_jet_eta.clear();
+  v_jet_phi.clear();
+  v_jet_pt.clear();
+  v_jet_area.clear();
+
+  v_jet_ch.clear();
+  v_jet_nh.clear();
+  v_jet_ne.clear();
+  v_jet_hfh.clear();
+  v_jet_hfe.clear();
+  v_jet_lep.clear();
+
   for (int i=0; i != nJets; ++i){
     pat::Jet jet = pfJets->at(i);
 
-    jet_eta[i] = jet.eta();
-    jet_phi[i] = jet.phi();
-    jet_pt[i] = jet.pt();
-    jet_area[i] = jet.jetArea();
+    v_jet_eta.push_back(jet.eta());
+    v_jet_phi.push_back(jet.phi());
+    v_jet_pt.push_back(jet.pt());
+    v_jet_area.push_back(jet.jetArea());
 
-    jet_ch[i] = jet.chargedHadronEnergyFraction();
-    jet_nh[i] = jet.neutralHadronEnergyFraction();
-    jet_ne[i] = jet.photonEnergyFraction();
-    jet_hfh[i] = jet.HFHadronEnergyFraction();
-    jet_hfe[i] = jet.HFEMEnergyFraction();
-    jet_lep[i] = jet.electronEnergyFraction() + jet.muonEnergyFraction();
+    v_jet_ch.push_back(jet.chargedHadronEnergyFraction());
+    v_jet_nh.push_back(jet.neutralHadronEnergyFraction());
+    v_jet_ne.push_back(jet.photonEnergyFraction());
+    v_jet_hfh.push_back(jet.HFHadronEnergyFraction());
+    v_jet_hfe.push_back(jet.HFEMEnergyFraction());
+    v_jet_lep.push_back(jet.electronEnergyFraction() + jet.muonEnergyFraction());
   }
 
 
+
+//--------- Trigger Information by SK--------//
+
+   edm::Handle<edm::TriggerResults> triggerBits;                                                                                        
+   iEvent.getByToken(triggerBits_, triggerBits);                                                                                        
+   
+   edm::Handle<pat::PackedTriggerPrescales> triggerPrescales;                                                                           
+   iEvent.getByToken(triggerPrescales_, triggerPrescales);                                                                              
+  
+   //cout << "triggerList ? " << triggerList.size() << endl; 
+   const edm::TriggerNames &names = iEvent.triggerNames(*triggerBits);
+   bool trigPass_;
+   trigger_name.clear();
+   trigger_error.clear();
+   trigger_run.clear();
+   trigger_pass.clear(); 
+   for (unsigned int i = 0, n = triggerBits->size(); i < n; ++i)                                                                        
+   {                                                                                                                                    
+      //cout << "Trigger : " << names.triggerName(i) << endl;
+      for (unsigned int j =0; j < triggerList.size() ;j++)                                                                              
+      {                                                                                                                                 
+         
+         trigPass_ = false;
+         trigError_ = false;                                              
+         trigRun_ =false;
+         unsigned int trigPreScale_ = 0;  
+         if (TString(names.triggerName(i)).Contains(triggerList.at(j)) )                                                                
+         {
+            //cout << "Trigger Name : " << names.triggerName(i) << " : " << triggerBits->accept(i) << endl;  
+            trigPass_ = triggerBits->accept(i);                                                                                         
+            trigError_ = triggerBits->error(i);                                                                                         
+            trigRun_ = triggerBits->wasrun(i) ;
+            trigPreScale_ = triggerPrescales->getPrescaleForIndex(i);                                                                   
+            trigger_pass.push_back(trigPass_); 
+            trigger_error.push_back(trigError_); 
+            trigger_run.push_back(trigRun_); 
+            trigger_prescale.push_back(trigPreScale_); 
+            trigger_name.push_back(names.triggerName(i)); 
+         }                                                                                                                              
+      
+      } // j                                                                                                                            
+     
+   }
+  
+//------------ Gen Jets ------------//
+  if (isMC_){
+     edm::Handle< vector<reco::GenJet> > genJets;
+     iEvent.getByToken(genJetTag_, genJets);
+     
+     
+     genht = 0;
+     //cout << "genJets->size()  : " << genJets->size() << endl;
+     nGenJets = genJets->size();
+     //genJets->size()<MAXGENJETS ? nGenJets = genJets->size() : nGenJets = MAXGENJETS;
+     cout << "nGenJets  : " << nGenJets << endl;
+     v_genjet_eta.clear();
+     v_genjet_phi.clear();
+     v_genjet_pt.clear();
+     v_genjet_area.clear();
+     
+     for (vector<reco::GenJet>::const_iterator itgJet = genJets->begin() ; itgJet !=genJets->end(); itgJet++) {
+     
+       float pt = itgJet->pt();
+       if (pt > 10) genht += pt;
+       cout << "itgJet-genJets->begin() " << itgJet-genJets->begin() << endl;
+       v_genjet_eta.push_back(itgJet->eta());
+       v_genjet_phi.push_back(itgJet->phi());
+       v_genjet_pt.push_back(itgJet->pt());
+       v_genjet_area.push_back(itgJet->jetArea());
+     
+      
+       /*genjet_eta[itgJet-genJets->begin()] = itgJet->eta();
+       genjet_phi[itgJet-genJets->begin()] = itgJet->phi();
+       genjet_pt[itgJet-genJets->begin()] = itgJet->pt();
+       genjet_area[itgJet-genJets->begin()] = itgJet->jetArea();*/
+     }
+  }
+
+ 
 //------------ Fill Tree ------------//
 
   tree->Fill();
