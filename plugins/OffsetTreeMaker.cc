@@ -765,9 +765,10 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
    trigger_error.clear();
    trigger_run.clear();
    trigger_pass.clear(); 
+   trigger_prescale.clear(); 
    for (unsigned int i = 0, n = triggerBits->size(); i < n; ++i)                                                                        
    {                                                                                                                                    
-      //cout << "Trigger : " << names.triggerName(i) << endl;
+      cout << "Trigger : " << names.triggerName(i) << endl;
       for (unsigned int j =0; j < triggerList.size() ;j++)                                                                              
       {                                                                                                                                 
          
