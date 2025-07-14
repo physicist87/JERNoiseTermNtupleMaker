@@ -1,0 +1,16 @@
+# .gitignore
+*.root
+*.log
+*.o
+*.so
+*.bk
+
+# Crab job logs
+log_*.txt
+
+__pycache__/
+NosiseTest/OffsetTreeMaker/.git/
+NosiseTest/OffsetTreeMaker/crab/
+NosiseTest/OffsetTreeMaker/fileList/
+NosiseTest/OffsetTreeMaker/batchjobs/
+NosiseTest/OffsetTreeMaker/backup/
