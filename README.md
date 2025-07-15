@@ -55,6 +55,9 @@ source /cvmfs/cms.cern.ch/cmsset_default.sh
 
 ```bash
 git clone -b Run2NoiseTermStudy_v1 https://github.com/physicist87/JERNoiseTermNtupleMaker.git
+
+scram b -j4
+
 cd JERNoiseTermNtupleMaker/NosiseTest/OffsetTreeMaker
 ```
 
