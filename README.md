@@ -37,6 +37,8 @@ NosiseTest/
 
 ### 1. Set up the CMSSW environment
 
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+
 ```bash
 cmsrel CMSSW_10_6_30_patch1
 cd CMSSW_10_6_30_patch1/src
