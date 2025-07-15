@@ -49,6 +49,9 @@ If needed:
 
 ```bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
+
+cmssw-el7 #(we need to use Singularity)
+
 ```
 
 ### 2. Clone this repository (select the desired branch)
