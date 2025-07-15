@@ -1,0 +1,24 @@
+Importing CMSSW configuration run_miniaod_ul16_data_RunBCD.py
+Finished importing CMSSW configuration run_miniaod_ul16_data_RunBCD.py
+Warning: The following output files will not be published, as they are not EDM files: ['Offset.root']
+Sending the request to the server at cmsweb.cern.ch
+Success: Your task has been delivered to the prod CRAB3 server.
+Task name: 220127_014209:sha_crab_Run2016B_v1
+Project dir: crab/ZeroBias/crab_Run2016B_v1
+Please use ' crab status -d crab/ZeroBias/crab_Run2016B_v1 ' to check how the submission process proceeds.
+Importing CMSSW configuration run_miniaod_ul16_data_RunBCD.py
+Finished importing CMSSW configuration run_miniaod_ul16_data_RunBCD.py
+Warning: The following output files will not be published, as they are not EDM files: ['Offset.root']
+Sending the request to the server at cmsweb.cern.ch
+Success: Your task has been delivered to the prod CRAB3 server.
+Task name: 220127_014431:sha_crab_Run2016C_v1
+Project dir: crab/ZeroBias/crab_Run2016C_v1
+Please use ' crab status -d crab/ZeroBias/crab_Run2016C_v1 ' to check how the submission process proceeds.
+Importing CMSSW configuration run_miniaod_ul16_data_RunBCD.py
+Finished importing CMSSW configuration run_miniaod_ul16_data_RunBCD.py
+Warning: The following output files will not be published, as they are not EDM files: ['Offset.root']
+Sending the request to the server at cmsweb.cern.ch
+Success: Your task has been delivered to the prod CRAB3 server.
+Task name: 220127_014649:sha_crab_Run2016D_v1
+Project dir: crab/ZeroBias/crab_Run2016D_v1
+Please use ' crab status -d crab/ZeroBias/crab_Run2016D_v1 ' to check how the submission process proceeds.

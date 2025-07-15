@@ -1,0 +1,8 @@
+Importing CMSSW configuration run_miniaod_ul18_C.py
+Finished importing CMSSW configuration run_miniaod_ul18_C.py
+Warning: The following output files will not be published, as they are not EDM files: ['Offset_Data.root']
+Sending the request to the server at cmsweb.cern.ch
+Success: Your task has been delivered to the prod CRAB3 server.
+Task name: 230307_032228:sha_crab_SingleCone_Run2018C_v1
+Project dir: crab/ZeroBias/crab_SingleCone_Run2018C_v1
+Please use ' crab status -d crab/ZeroBias/crab_SingleCone_Run2018C_v1 ' to check how the submission process proceeds.

@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/cms/cmssw/CMSSW_10_6_8/bin/slc7_amd64_gcc820/pileupCalc.py", line 245, in <module>
+    inputRange =  selectionParser.selectionParser (inputfilecontent).runsandls()
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/cms/cmssw-patch/CMSSW_10_6_8_patch1/python/RecoLuminosity/LumiDB/selectionParser.py", line 8, in __init__
+    strresult=json.loads(selectStr)
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/decoder.py", line 380, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Expecting property name: line 150 column 1 (char 3765)
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/cms/cmssw/CMSSW_10_6_8/bin/slc7_amd64_gcc820/pileupCalc.py", line 245, in <module>
+    inputRange =  selectionParser.selectionParser (inputfilecontent).runsandls()
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/cms/cmssw-patch/CMSSW_10_6_8_patch1/python/RecoLuminosity/LumiDB/selectionParser.py", line 8, in __init__
+    strresult=json.loads(selectStr)
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/decoder.py", line 380, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Expecting property name: line 46 column 1 (char 1213)
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/cms/cmssw/CMSSW_10_6_8/bin/slc7_amd64_gcc820/pileupCalc.py", line 245, in <module>
+    inputRange =  selectionParser.selectionParser (inputfilecontent).runsandls()
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/cms/cmssw-patch/CMSSW_10_6_8_patch1/python/RecoLuminosity/LumiDB/selectionParser.py", line 8, in __init__
+    strresult=json.loads(selectStr)
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/cvmfs/cms.cern.ch/slc7_amd64_gcc820/external/python/2.7.15-pafccj/lib/python2.7/json/decoder.py", line 380, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Expecting property name: line 67 column 1 (char 1635)

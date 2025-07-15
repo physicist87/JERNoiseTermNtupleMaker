@@ -1,0 +1,14 @@
+Importing CMSSW configuration run_miniaod_ul18_mc.py
+Finished importing CMSSW configuration run_miniaod_ul18_mc.py
+Sending the request to the server at cmsweb.cern.ch
+Success: Your task has been delivered to the prod CRAB3 server.
+Task name: 230314_092709:sha_crab_SingleConeTest_FlatPU0to75_v2p1
+Project dir: crab/MC/crab_SingleConeTest_FlatPU0to75_v2p1
+Please use ' crab status -d crab/MC/crab_SingleConeTest_FlatPU0to75_v2p1 ' to check how the submission process proceeds.
+Importing CMSSW configuration run_miniaod_ul18_mc.py
+Finished importing CMSSW configuration run_miniaod_ul18_mc.py
+Sending the request to the server at cmsweb.cern.ch
+Success: Your task has been delivered to the prod CRAB3 server.
+Task name: 230314_092927:sha_crab_SingleConeTest_PreMix_v2p1
+Project dir: crab/MC/crab_SingleConeTest_PreMix_v2p1
+Please use ' crab status -d crab/MC/crab_SingleConeTest_PreMix_v2p1 ' to check how the submission process proceeds.

@@ -1,0 +1,32 @@
+../../Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
+Error in <RootX11IOErrorHandler>: fatal X11 error (connection to server lost?!)
+
+**** Save data and exit application ****
+
+Significant probability density outside of your histogram
+Consider using a higher value of --maxPileupBin
+Mean 43.775366, RMS 21.695861, Integrated probability 0.973392
+../../Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
+Error in <TGClient::TGClient>: can't open display "155.230.23.71:17.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Significant probability density outside of your histogram
+Consider using a higher value of --maxPileupBin
+Mean 46.207331, RMS 22.901186, Integrated probability 0.968754
+../../Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
+Error in <TGClient::TGClient>: can't open display "155.230.23.71:17.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Significant probability density outside of your histogram
+Consider using a higher value of --maxPileupBin
+Mean 48.639296, RMS 24.106512, Integrated probability 0.961607
+../../Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
+Error in <TGClient::TGClient>: can't open display "155.230.23.71:17.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Significant probability density outside of your histogram
+Consider using a higher value of --maxPileupBin
+Mean 51.071261, RMS 25.311838, Integrated probability 0.951556
+../../Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
+Error in <TGClient::TGClient>: can't open display "155.230.23.71:17.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Significant probability density outside of your histogram
+Consider using a higher value of --maxPileupBin
+Mean 53.503226, RMS 26.517163, Integrated probability 0.938415

@@ -1,0 +1,74 @@
+15-Mar-2023 23:44:00 KST  Initiating request to open file file:/d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/ForSummer20_v1/TestSingleCone_v1/Summer20_v1/ROOTFiles/00FD9B98-25A2-B54E-A580-F4C5D044ED89.root
+15-Mar-2023 23:44:12 KST  Successfully opened file file:/d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/ForSummer20_v1/TestSingleCone_v1/Summer20_v1/ROOTFiles/00FD9B98-25A2-B54E-A580-F4C5D044ED89.root
+Begin processing the 1st record. Run 1, Event 3616810, LumiSection 36169 on stream 0 at 15-Mar-2023 23:44:24.626 KST
+15-Mar-2023 23:44:59 KST  Closed file file:/d0/scratch/sha/Analyses/ServiceWork/JERC/NoiseTerm_v1/MakeNtuple_v1/ForSummer20_v1/TestSingleCone_v1/Summer20_v1/ROOTFiles/00FD9B98-25A2-B54E-A580-F4C5D044ED89.root
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 1000 passed = 1000 failed = 0
+
+TrigReport ---------- Path   Summary ------------
+TrigReport  Trig Bit#   Executed     Passed     Failed      Error Name
+TrigReport     1    0       1000       1000          0          0 p
+
+TrigReport -------End-Path   Summary ------------
+TrigReport  Trig Bit#   Executed     Passed     Failed      Error Name
+
+TrigReport ---------- Modules in Path: p ------------
+TrigReport  Trig Bit#    Visited     Passed     Failed      Error Name
+TrigReport     1    0       1000       1000          0          0 pf
+
+TrigReport ---------- Module Summary ------------
+TrigReport    Visited   Executed     Passed     Failed      Error Name
+TrigReport       1000       1000       1000          0          0 TriggerResults
+TrigReport       1000       1000       1000          0          0 p
+TrigReport       1000       1000       1000          0          0 pf
+
+TimeReport ---------- Event  Summary ---[sec]----
+TimeReport       event loop CPU/event = 0.032346
+TimeReport      event loop Real/event = 0.041023
+TimeReport     sum Streams Real/event = 0.035153
+TimeReport efficiency CPU/Real/thread = 0.788498
+
+TimeReport ---------- Path   Summary ---[Real sec]----
+TimeReport  per event     per exec  Name
+TimeReport   0.034659     0.034659  p
+TimeReport  per event     per exec  Name
+
+TimeReport -------End-Path   Summary ---[Real sec]----
+TimeReport  per event     per exec  Name
+TimeReport  per event     per exec  Name
+
+TimeReport ---------- Modules in Path: p ---[Real sec]----
+TimeReport  per event    per visit  Name
+TimeReport   0.028587     0.028587  pf
+TimeReport  per event    per visit  Name
+
+TimeReport ---------- Module Summary ---[Real sec]----
+TimeReport  per event     per exec    per visit  Name
+TimeReport   0.000004     0.000004     0.000004  TriggerResults
+TimeReport   0.000011     0.000011     0.000011  p
+TimeReport   0.028587     0.028587     0.028587  pf
+TimeReport  per event     per exec    per visit  Name
+
+T---Report end!
+
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 fileAction           -s file_close                             1        1
+    2 fileAction           -s file_open                              2        2
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 fileAction           PostGlobalEndRun                  
+    2 fileAction           pre-events       pre-events       
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+System                  3                   3
+
+dropped waiting message count 0
