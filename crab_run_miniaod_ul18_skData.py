@@ -5,8 +5,13 @@ config = config()
 config.General.workArea = 'crab/ZeroBias'
 
 config.JobType.pluginName = 'Analysis'
-#config.JobType.psetName = 'run_miniaod_ul18.py'
-config.JobType.psetName = 'run_miniaod_ul18_D.py'
+#config.JobType.psetName = 'run_miniaod_ul18_D.py'
+#config.JobType.psetName = 'run_miniaod_ul18_NoFilter.py'
+#config.JobType.psetName = 'run_miniaod_ul18_NoFilter_D.py'
+config.JobType.psetName = 'run_miniaod_ul18_A.py'
+config.JobType.psetName = 'run_miniaod_ul18_B.py'
+#config.JobType.psetName = 'run_miniaod_ul18_C.py'
+#config.JobType.psetName = 'run_miniaod_ul18_D.py'
 config.JobType.allowUndistributedCMSSW = True
 config.JobType.inputFiles = ["pileup_2016.txt", "pileup_2017.txt", "pileup_2018.txt"]
 config.JobType.outputFiles = ["Offset_Data.root"]
@@ -14,7 +19,8 @@ config.JobType.outputFiles = ["Offset_Data.root"]
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'LumiBased'
 #config.Data.unitsPerJob = 20
-config.Data.unitsPerJob = 50
+config.Data.unitsPerJob = 10
+#config.Data.unitsPerJob = 50
 config.Data.lumiMask = 'Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt'
 
 
@@ -22,26 +28,52 @@ config.Data.lumiMask = 'Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.tx
 #config.Site.storageSite = 'T2_KR_KNU'
 #config.Site.storageSite = 'T2_CH_CERNBOX'
 config.Site.storageSite = 'T3_KR_KNU'
+config.Site.whitelist = ['T3_KR_KNU', 'T2_CH_CERN']
 config.Data.outLFNDirBase = '/store/user/sha/JERNosieStudy'
 
 if __name__ == '__main__':
     
     from CRABAPI.RawCommand import crabCommand
 
-    #config.General.requestName = 'Run2018Av2'
-    #config.General.requestName = 'Run2018Av2-3'
+    #config.General.requestName = 'Run2018Av2-v13-2'
     #config.Data.inputDataset = '/ZeroBias/Run2018A-12Nov2019_UL2018-v2/MINIAOD'
     #crabCommand('submit', config = config)
-    """
-    config.General.requestName = 'Run2018Bv2'
-    config.Data.inputDataset = '/ZeroBias/Run2018B-12Nov2019_UL2018-v2/MINIAOD'
+
+
+    #config.General.requestName = 'PUPPITest_Run2018_v1'
+    #config.Data.inputDataset = '/ZeroBias/Run2018A-UL2018_MiniAODv2-v1/MINIAOD'
+    #crabCommand('submit', config = config)
+
+
+    #config.General.requestName = 'PUPPITest_Run2018A_v1p4p2'
+    #config.Data.inputDataset = '/ZeroBias/Run2018A-UL2018_MiniAODv2-v1/MINIAOD'
+    #crabCommand('submit', config = config)
+
+    #config.General.requestName = 'Run2018Bv2-v13-2'
+    #config.Data.inputDataset = '/ZeroBias/Run2018B-12Nov2019_UL2018-v2/MINIAOD'
+    #crabCommand('submit', config = config)
+
+    #config.General.requestName = 'PUPPITest_Run2018B_v1p4'
+    #config.Data.inputDataset = '/ZeroBias/Run2018B-UL2018_MiniAODv2-v1/MINIAOD'
+    #crabCommand('submit', config = config)
+
+    config.General.requestName = 'PUPPITest_Run2018B_v1p4p2'
+    config.Data.inputDataset = '/ZeroBias/Run2018B-UL2018_MiniAODv2-v1/MINIAOD'
     crabCommand('submit', config = config)
 
-    config.General.requestName = 'Run2018Cv1'
-    config.Data.inputDataset = '/ZeroBias/Run2018C-12Nov2019_UL2018_rsb-v1/MINIAOD'
-    crabCommand('submit', config = config)
-    """
+    #config.General.requestName = 'Run2018Cv1-v13-2'
+    #config.Data.inputDataset = '/ZeroBias/Run2018C-12Nov2019_UL2018_rsb-v1/MINIAOD'
+    #crabCommand('submit', config = config)
 
-    config.General.requestName = 'Run2018Dv1-2'
-    config.Data.inputDataset = '/ZeroBias/Run2018D-12Nov2019_UL2018_rsb-v1/MINIAOD'
-    crabCommand('submit', config = config)
+    #config.General.requestName = 'PUPPITest_Run2018C_v1p4p1'
+    #config.Data.inputDataset = '/ZeroBias/Run2018C-UL2018_MiniAODv2-v1/MINIAOD'
+    #crabCommand('submit', config = config)
+
+    #config.General.requestName = 'Run2018Dv1-v13-2'
+    #config.Data.inputDataset = '/ZeroBias/Run2018D-12Nov2019_UL2018_rsb-v1/MINIAOD'
+    #crabCommand('submit', config = config)
+    #
+    #
+    #config.General.requestName = 'PUPPITest_Run2018D_v1'
+    #config.Data.inputDataset = '/ZeroBias/Run2018D-UL2018_MiniAODv2-v1/MINIAOD'
+    #crabCommand('submit', config = config)

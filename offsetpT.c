@@ -25,15 +25,19 @@ float etabins[ETA_BINS+1] =
 
 void offsetpT(int n1=1, int n2=25, float topX=15, float topY=30){
 
+  cout << "sk test" << endl;
   setStyle();
         
   const double R = 0.4;
   int Rlabel = R*10;
 
   string run_name; float luminosity;
+  cout << "Run: " << endl;
+  cin >> run_name;
+/*  string run_name; float luminosity;
   cout << "Run: " << " lumi " << endl;
   cin >> run_name >> luminosity;
-
+  cout << "Test ? " << endl;
   //TFile* mcFile = TFile::Open(Form("SN_campaign2018_Run%s_R4.root",run_name.c_str()));
   //TFile* dataFile = TFile::Open( Form("/uscms_data/d3/broozbah/2018_sep/CMSSW_10_2_0/src/L1Res/OffsetTreeMaker/Run%s_newcert_R4.root",run_name.c_str()) );
   //TFile* dataFile = TFile::Open( Form("/uscms_data/d3/broozbah/2018_sep_RunCv3/CMSSW_10_1_8/src/L1/OffsetTreeMaker/RunCV3_R4.root",run_name.c_str()) );
@@ -44,8 +48,15 @@ void offsetpT(int n1=1, int n2=25, float topX=15, float topY=30){
   //TFile* mcFile = TFile::Open(Form("SN_campaign2018_Run%s_R4.root",run_name.c_str()));
   //TFile* dataFile = TFile::Open( Form("/uscms_data/d3/broozbah/2018_DataMC/CMSSW_10_1_6/src/L1/OffsetTreeMaker/root_files_R48/Run%s_R4.root",run_name.c_str()) );
 
-  TFile* mcFile = TFile::Open("SN_2018_hl_R4.root");
-  TFile* dataFile = TFile::Open( "RunA_rereco_R4.root" );
+  //TFile* mcFile = TFile::Open("SN_2018_hl_R4.root");
+  //TFile* dataFile = TFile::Open( "RunA_rereco_R4.root" );
+  */
+
+  TFile* mcFile = TFile::Open("Offset_MC_100_R4.root");
+  TFile* dataFile = TFile::Open( "Offset_Data_R4.root" );
+
+  if (mcFile==NULL){cout << "mcFile : File !!" << endl; return;}
+  if (dataFile==NULL){cout << "dataFile : File !!" << endl; return;}
 
   TString var_type = "nPU"; // nPU, nPV
   bool isIndirect = true;   // indirectRho
@@ -77,11 +88,13 @@ void offsetpT(int n1=1, int n2=25, float topX=15, float topY=30){
     if (pf_type.EqualTo("all")){  //add up all histograms
 
       TString hname = Form("p_offset_eta_%s%i_", var_type.Data(), n1+n) + ids[ids.size()-1];
+      cout <<  "all hname ? " << hname << endl;
       mcProfiles.push_back( ((TProfile*) mcFile->FindObjectAny(hname))->ProjectionX( ids[ids.size()-1]+Form("%i_mc",n1+n) ) );
       dataProfiles.push_back( ((TProfile*) dataFile->FindObjectAny(hname))->ProjectionX( ids[ids.size()-1]+Form("%i_data",n1+n) ) );
 
       for (int i=0; i<ids.size()-1; i++){
         hname = Form("p_offset_eta_%s%i_", var_type.Data(), n1+n) + ids[i];
+        cout <<  "all : sub? hname ??? " << hname << endl;
         mcProfiles.back()->Add( ((TProfile*) mcFile->FindObjectAny(hname))->ProjectionX( ids[i]+Form("%i_mc",n1+n) ) );
         dataProfiles.back()->Add( ((TProfile*) dataFile->FindObjectAny(hname))->ProjectionX( ids[i]+Form("%i_data",n1+n) ) );
       }
@@ -89,17 +102,20 @@ void offsetpT(int n1=1, int n2=25, float topX=15, float topY=30){
     else if (pf_type.EqualTo("chs")){  //add up all histograms except chm
 
       TString hname = Form("p_offset_eta_%s%i_", var_type.Data(), n1+n) + ids[ids.size()-2];
+      cout <<  "chs hname ? " << hname << endl;
       mcProfiles.push_back( ((TProfile*) mcFile->FindObjectAny(hname))->ProjectionX( ids[ids.size()-2]+Form("%i_mc",n1+n) ) );
       dataProfiles.push_back( ((TProfile*) dataFile->FindObjectAny(hname))->ProjectionX( ids[ids.size()-2]+Form("%i_data",n1+n) ) );
 
       for (int i=0; i<ids.size()-2; i++){
         hname = Form("p_offset_eta_%s%i_", var_type.Data(), n1+n) + ids[i];
+        cout <<  "chs : sub? hname ??? " << hname << endl;
         mcProfiles.back()->Add( ((TProfile*) mcFile->FindObjectAny(hname))->ProjectionX( ids[i]+Form("%i_mc",n1+n) ) );
         dataProfiles.back()->Add( ((TProfile*) dataFile->FindObjectAny(hname))->ProjectionX( ids[i]+Form("%i_data",n1+n) ) );
       }
     }
     else{
       TString hname = Form("p_offset_eta_%s%i_", var_type.Data(), n1+n) + pf_type;
+      cout <<  "other hname ? " << hname << endl;
       mcProfiles.push_back( ((TProfile*) mcFile->FindObjectAny(hname))->ProjectionX( pf_type+Form("%i_mc",n1+n) ) );
       dataProfiles.push_back( ((TProfile*) dataFile->FindObjectAny(hname))->ProjectionX( pf_type+Form("%i_data",n1+n) ) );
     }
@@ -129,6 +145,9 @@ void offsetpT(int n1=1, int n2=25, float topX=15, float topY=30){
     }
     var_type = "indirectRho";
   }
+
+
+  gSystem->mkdir("./plots/" + var_type + "/" + pf_type + Form("_%s/", run_name.c_str() ));
 
   ofstream writeMC("./plots/" + var_type + "/" + pf_type + Form("_%s/Fall18_17Sep2018%s_V1_MC_L1RC_AK%iPF", run_name.c_str(), run_name.c_str(), Rlabel) + pf_type + ".txt");
   ofstream writeData("./plots/" + var_type + "/" + pf_type + Form("_%s/Fall18_17Sep2018%s_V1_DATA_L1RC_AK%iPF", run_name.c_str(), run_name.c_str(), Rlabel) + pf_type + ".txt");

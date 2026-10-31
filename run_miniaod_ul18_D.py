@@ -43,7 +43,7 @@ else:
   process.load( "Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff" )
   from Configuration.AlCa.GlobalTag import GlobalTag
   #process.GlobalTag = GlobalTag( process.GlobalTag, '106X_dataRun2_v20' ) #UL2017 B-F
-  process.GlobalTag = GlobalTag( process.GlobalTag, '106X_dataRun2_v24' ) #UL2018 A-C
+  process.GlobalTag = GlobalTag( process.GlobalTag, '106X_dataRun2_v37' ) #UL2018 A-C
   #process.GlobalTag = GlobalTag( process.GlobalTag, '106X_dataRun2_v26' ) #UL2018 D
   #process.GlobalTag = GlobalTag( process.GlobalTag, '106X_dataRun2_v27' ) #UL2016 B-H
 
@@ -56,6 +56,11 @@ else:
     throw = cms.bool(False)
   )
 
+  run = "A"
+  eraName = "Summer19UL18_Run"+run+"_V5_DATA"
+  jetType_name = "AK4PFchs" # or "AK4PF"
+
+
   #Beam Halo
   process.load('RecoMET.METFilters.CSCTightHaloFilter_cfi')
 
@@ -67,16 +72,21 @@ else:
     reverseDecision = cms.bool(False)
   )
 
+process.TFileService = cms.Service("TFileService",
+                                       fileName = cms.string("Offset" + OutputName + ".root")
+                                   )
+
+
 process.pf = cms.EDAnalyzer("OffsetTreeMaker",
     numSkip = cms.int32(1),
-    RootFileName = cms.string("Offset" + OutputName + ".root"),
+    #RootFileName = cms.string("Offset" + OutputName + ".root"),
     #puFileName = cms.string("lumi-per-bx.root"),
 #    puFileName = cms.string("pileup_2016.txt"),
 #    puFileName = cms.string("pileup_2017.txt"),
     puFileName = cms.string("pileup_2018.txt"),
     isMC = isMC,
     writeCands = cms.bool(True),
-    writeParticles = cms.bool(False),
+    writeParticles = cms.bool(True),
     #trackTag = cms.InputTag("generalTracks"),
     Generator = cms.InputTag("generator"),
     GenParticles = cms.InputTag("prunedGenParticles"),
@@ -94,11 +104,23 @@ process.pf = cms.EDAnalyzer("OffsetTreeMaker",
                                                         ### SingleMuon ###
                                                         'HLT_ZeroBias_part',
                                                        'HLT_ZeroBias_v',
+                                                       'HLT_L1MinimumBiasHF_OR_v',
+                                                       'HLT_L1MinimumBiasHF0OR_v'
                                                         ),
 
     bits  = cms.InputTag("TriggerResults","","HLT"),
     prescales        = cms.InputTag("patTrigger"),
-    genJetTag = cms.InputTag("slimmedGenJets")
+    genJetTag = cms.InputTag("slimmedGenJets"),
+    #etaBinTag = cms.vdouble(0,0.5,0.8,1.1,1.3,1.7,1.9,2.1,2.3,2.5,2.8,3.0,3.2,4.7),
+    etaBinTag = cms.vdouble(0,0.261, 0.522, 0.783, 1.044, 1.305, 1.566, 1.740, 1.930, 2.043, 2.172, 2.322, 2.500, 2.650, 2.853, 2.964, 3.139, 3.489, 3.839, 5.191),
+    era = cms.string(eraName),
+    jet_type = cms.string(jetType_name),
+    #doL1L2L3Res = cms.bool(True),
+
+    doL1L2L3Res = cms.bool(True),
+    doJetVeto = cms.bool(True), 
+    JetVetoFileName = cms.string("hotjets-UL18.root"), 
+    JetVetoHistName = cms.vstring("h2hot_ul18_plus_hem1516_and_hbp2m1")
 )
 
 process.myseq = cms.Sequence( process.pf )

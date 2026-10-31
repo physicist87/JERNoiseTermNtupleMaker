@@ -34,6 +34,8 @@ if isMC:
   from Configuration.AlCa.GlobalTag import GlobalTag
   #process.GlobalTag = GlobalTag( process.GlobalTag, '106X_mc2017_realistic_v6' )
   process.GlobalTag = GlobalTag( process.GlobalTag, '106X_mc2017_realistic_v9' )
+  eraName = "Summer19UL18_V5_MC"
+  jetType_name = "AK4PFchs" # or "AK4PF"
 
 else:
   OutputName = "_Data"
@@ -55,6 +57,11 @@ else:
     andOr = cms.bool(True), #----- True = OR, False = AND between the HLTPaths
     throw = cms.bool(False)
   )
+
+  run = "A"
+  eraName = "Summer19UL18_Run"+run+"_V5_DATA"
+  jetType_name = "AK4PFchs" # or "AK4PF"
+
 
   #Beam Halo
   process.load('RecoMET.METFilters.CSCTightHaloFilter_cfi')
@@ -94,11 +101,17 @@ process.pf = cms.EDAnalyzer("OffsetTreeMaker",
                                                         ### SingleMuon ###
                                                         'HLT_ZeroBias_part',
                                                        'HLT_ZeroBias_v',
+                                                       'HLT_L1MinimumBiasHF_OR_v',
+                                                       'HLT_L1MinimumBiasHF0OR_v'
                                                         ),
 
     bits  = cms.InputTag("TriggerResults","","HLT"),
     prescales        = cms.InputTag("patTrigger"),
-    genJetTag = cms.InputTag("slimmedGenJets")
+    genJetTag = cms.InputTag("slimmedGenJets"),
+    etaBinTag = cms.vdouble(0,0.5,0.8,1.1,1.3,1.7,1.9,2.1,2.3,2.5,2.8,3.0,3.2,4.7),
+    era = cms.string(eraName),
+    jet_type = cms.string(jetType_name),
+    doL1L2L3Res = cms.bool(True)
 )
 
 process.myseq = cms.Sequence( process.pf )

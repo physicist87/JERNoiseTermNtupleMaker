@@ -1,0 +1,12 @@
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/1F947FF9-D51E-DB40-A555-07750268210E.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/3EE42F52-0A03-4E4F-9D63-C39A0C9DC8F2.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/3EF63E3B-4C6A-0C45-8985-C2D2AA7C807D.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/451C18D2-2891-7B4D-BA70-51B04EB32522.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/5F328B9D-E0FF-6643-9EC0-01222D352383.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/5F51A6FB-06CC-FE47-A4ED-83508EEE8FB0.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/6D8BE8D2-B6AB-8D43-B6C2-D1D89AF78ACF.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/6E307A6F-48F6-2645-BCA8-84E8F849D8F4.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/7469DDEE-A903-7547-878E-333612F5697C.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/7D05EF40-FA57-3243-8DB0-8CCFBF195E4A.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/8A9BEB37-D480-9944-937C-B2C391D2431E.root
+dcap://cluster142.knu.ac.kr//pnfs/knu.ac.kr/data/cms/store/user/sha/JERNosieStudy/MiniAOD/Summer20UL16/MiniAODv2/92DB32FD-73F8-6648-A4C2-6E21358D2774.root
