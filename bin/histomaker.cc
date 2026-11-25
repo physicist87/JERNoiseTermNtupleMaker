@@ -48,6 +48,7 @@ const int MAXRHO = 100;
 
 int main(int argc, char* argv[]) {
 
+  cout << "=========Check SK===========" << endl;
   bool isMC = false;
   if (string(argv[1]) == "true") isMC = true;
   float rCone = stof( argv[2] );
@@ -71,11 +72,21 @@ int main(int argc, char* argv[]) {
   //Declare Histos//
 
   enum Flavor{ chm = 0, chu, nh, ne, hfh, hfe, lep, untrk, numFlavors};
+  cout << "chm : " << chm << endl;
+  cout << "chu : " << chu << endl;
+  cout << "nh : " << nh << endl;
+  cout << "ne : " << ne << endl;
+  cout << "hfh : " << hfh << endl;
+  cout << "hfe : " << hfe << endl;
+  cout << "lep : " << lep << endl;
+  cout << "untrk : " << untrk << endl;
+  cout << "numFlavors : " << numFlavors << endl;
   TString ids[] = {"chm", "chu", "nh", "ne", "hfh", "hfe", "lep", "untrk"};
   TString hname;
 
   for (int i_id=0; i_id<numFlavors; i_id++){
     for (int i_nPU=0; i_nPU<MAXNPU; i_nPU++){
+      cout << "ids[i_id] : " << ids[i_id] << endl;
       hname = Form("p_offset_eta_nPU%i_", i_nPU) + ids[i_id];
       m_Profiles[hname] = new TProfile(hname, hname, nEta, etabins);
       hname = Form("p_mikko_eta_nPU%i_",i_nPU) + ids[i_id];
