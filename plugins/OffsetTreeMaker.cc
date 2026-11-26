@@ -312,6 +312,10 @@ class OffsetTreeMaker : public edm::one::EDAnalyzer<edm::one::SharedResources, e
     /// varialbes for particle flow object ///
     vector<int> pf_type, pf_fromPV;
     vector<bool> pf_fromPVs;
+    // Index of the vertex whose track list holds the charged PF track (-1 if none or neutral)
+    vector<int> pf_vtxIdx;
+    // Track dz with respect to vertex 0 for charged PF candidates (-999 for neutral or no track)
+    vector<float> pf_dzPV0;
     vector<float> pf_pt, pf_eta, pf_phi, pf_et, pf_energy, pf_m, pf_puppiW;
     vector<int> particle_id, particle_charge;
     vector<float> particle_et, particle_pt, particle_eta, particle_phi;
@@ -482,6 +486,8 @@ void  OffsetTreeMaker::beginJob() {
     tree->Branch("pf_type", "std::vector<int>",   &pf_type);
     tree->Branch("pf_fromPV", "std::vector<int>",   &pf_fromPV);
     tree->Branch("pf_fromPVs", "std::vector<bool>",   &pf_fromPVs);
+    tree->Branch("pf_vtxIdx", "std::vector<int>",   &pf_vtxIdx);
+    tree->Branch("pf_dzPV0", "std::vector<float>", &pf_dzPV0);
     tree->Branch("pf_pt",   "std::vector<float>", &pf_pt);
     tree->Branch("pf_eta",  "std::vector<float>", &pf_eta);
     tree->Branch("pf_phi",  "std::vector<float>", &pf_phi);
@@ -976,6 +982,7 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
   memset(et_twopi, 0, sizeof(et_twopi));
 
   pf_type.clear(); pf_fromPV.clear(); pf_fromPVs.clear();
+  pf_vtxIdx.clear(); pf_dzPV0.clear();
   pf_pt.clear(); pf_eta.clear(); pf_phi.clear();
   pf_et.clear(); pf_energy.clear(); pf_m.clear(); pf_puppiW.clear();
   
@@ -1001,17 +1008,24 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
     // --- Enhanced Vertex Association for AOD ---
     int fromPV_val = 0; 
     bool attached = false;
+    int vtxIdx_val = -1;
+    float dzPV0_val = -999.;
     
     if (i_pf->charge() != 0) {
       // For Charged Particles: Traditional Track-to-Vertex matching
       reco::TrackRef pftrack = i_pf->trackRef();
+      if (pftrack.isNonnull() && !primaryVertices->empty())
+        dzPV0_val = pftrack->dz( primaryVertices->at(0).position() );
       
       vector<reco::Vertex>::const_iterator i_pv, endpv = primaryVertices->end();
       for (i_pv = primaryVertices->begin(); i_pv != endpv && !attached; ++i_pv) {
         if (!i_pv->isFake() && i_pv->ndof() >= 4 && fabs(i_pv->z()) < 24) {
           for (auto i_vtxTrk = i_pv->tracks_begin(); i_vtxTrk != i_pv->tracks_end() && !attached; ++i_vtxTrk) {
             reco::TrackRef vtxTrk(i_vtxTrk->castTo<reco::TrackRef>());
-            if (vtxTrk == pftrack) attached = true;
+            if (vtxTrk == pftrack) {
+              attached = true;
+              vtxIdx_val = static_cast<int>( std::distance(primaryVertices->begin(), i_pv) );
+            }
           }
         }
       }
@@ -1049,6 +1063,8 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
 
       pf_type.push_back( static_cast<int>(flavor) );
       pf_fromPV.push_back( fromPV_val );
+      pf_vtxIdx.push_back( vtxIdx_val );
+      pf_dzPV0.push_back( dzPV0_val );
       pf_pt.push_back( i_pf->pt() );
       pf_eta.push_back( i_pf->eta() );
       pf_phi.push_back( i_pf->phi() );
