@@ -3,9 +3,10 @@
 # CRAB configuration for Run3 2026 ZeroBias data (AOD)
 #
 # Usage:
-#   RUN=B GT=<data GT> python3 crab_run_2026_data.py
-#   RUN=C GT=<data GT> python3 crab_run_2026_data.py
-#   RUN=D GT=<data GT> python3 crab_run_2026_data.py
+#   RUN=B python3 crab_run_2026_data.py
+#   RUN=C python3 crab_run_2026_data.py
+#   RUN=D python3 crab_run_2026_data.py
+#   GT=<other data GT> overrides the default 161X_dataRun3_Prompt_v1
 #
 # Lumi masks, copy both into this directory from
 #   /eos/user/c/cmsdqm/www/CAF/certification/Collisions26/
@@ -24,9 +25,9 @@ config = config()
 submission_version = "v1"
 
 run = os.environ.get("RUN", None)
-gt  = os.environ.get("GT", None)
-if run is None or gt is None:
-    raise RuntimeError("Set RUN and GT, e.g. RUN=B GT=<data GT> python3 crab_run_2026_data.py")
+gt  = os.environ.get("GT", "161X_dataRun3_Prompt_v1")
+if run is None:
+    raise RuntimeError("Set RUN, e.g. RUN=B python3 crab_run_2026_data.py")
 run = run.upper()
 
 datasets = {

@@ -1,10 +1,10 @@
 # Configuration for OffsetTreeMaker, Run3 2026 ZeroBias data (AOD), runs B, C, D
 #
 # Local test:
-#   cmsRun run_aod_data_2026_all.py run=B globalTag=<data GT>
+#   cmsRun run_aod_data_2026_all.py run=B maxEvents=10 inputFiles=<AOD file>
 # CRAB:
 #   config.JobType.psetName    = 'run_aod_data_2026_all.py'
-#   config.JobType.pyCfgParams = ['run=B', 'globalTag=<data GT>']
+#   config.JobType.pyCfgParams = ['run=B']
 
 import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
@@ -13,9 +13,9 @@ options = VarParsing('analysis')
 options.register('run', 'B',
     VarParsing.multiplicity.singleton, VarParsing.varType.string,
     'Run period: B, C, D')
-options.register('globalTag', '',
+options.register('globalTag', '161X_dataRun3_Prompt_v1',
     VarParsing.multiplicity.singleton, VarParsing.varType.string,
-    'Data global tag, take it from edmProvDump of a 2026 PromptReco AOD file')
+    'Data global tag, default is the PPD 2026 MINI and NANO prompt GT')
 options.register('jecEra', 'Winter25Prompt25_RunG_V3_DATA',
     VarParsing.multiplicity.singleton, VarParsing.varType.string,
     'JEC era in data/, interim 2025 JEC until 2026 JEC is available')
@@ -34,8 +34,6 @@ run = options.run
 validRuns = ['B', 'C', 'D']
 if run not in validRuns:
     raise RuntimeError("Unknown run period: " + run + ", valid: " + ", ".join(validRuns))
-if options.globalTag == '':
-    raise RuntimeError("Set globalTag=<data GT> (check with edmProvDump on a 2026 PromptReco AOD file)")
 
 OutputName = '_Data_Run2026' + run
 
