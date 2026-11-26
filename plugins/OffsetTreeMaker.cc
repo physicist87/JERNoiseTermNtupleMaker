@@ -232,6 +232,9 @@ class OffsetTreeMaker : public edm::one::EDAnalyzer<edm::one::SharedResources, e
     float ht;
     int nJets;
     vector<float> v_jet_eta, v_jet_phi, v_jet_pt, v_jet_area;
+    // AK4 PUPPI jets, raw kinematics plus L2L3 (and residual for data) correction factor
+    int nJetsPuppi;
+    vector<float> v_jetpuppi_eta, v_jetpuppi_phi, v_jetpuppi_pt, v_jetpuppi_area, v_jetpuppi_jec;
     vector<float> v_jet_ch, v_jet_nh, v_jet_ne, v_jet_hfh, v_jet_hfe, v_jet_lep;
     // RC cone variable //
     vector<int> v_rc1jet_numpf, v_rc2jet_numpf;
@@ -359,6 +362,7 @@ class OffsetTreeMaker : public edm::one::EDAnalyzer<edm::one::SharedResources, e
     edm::EDGetTokenT<double> rhoCentralCaloTag_;
     //edm::EDGetTokenT< vector<pat::Jet> > pfJetTag_;
     edm::EDGetTokenT< reco::PFJetCollection > pfJetTag_;
+    edm::EDGetTokenT< reco::PFJetCollection > pfJetPuppiTag_;
     edm::EDGetTokenT< reco::GenJetCollection > genJetTag_;
     /// variables for trigger ///
     std::vector<std::string> triggerList;
@@ -420,6 +424,9 @@ OffsetTreeMaker::OffsetTreeMaker(const edm::ParameterSet& iConfig)
   rhoCentralCaloTag_ = consumes<double>( iConfig.getParameter<edm::InputTag>("rhoCentralCaloTag") );
   //pfJetTag_ = consumes< vector<pat::Jet> >( iConfig.getParameter<edm::InputTag>("pfJetTag") );
   pfJetTag_ = consumes<reco::PFJetCollection>( iConfig.getParameter<edm::InputTag>("pfJetTag") );
+  pfJetPuppiTag_ = consumes<reco::PFJetCollection>(
+      iConfig.existsAs<edm::InputTag>("pfJetPuppiTag") ? iConfig.getParameter<edm::InputTag>("pfJetPuppiTag")
+                                                       : edm::InputTag("ak4PFJetsPuppi") );
   triggerList       = iConfig.getParameter<std::vector<std::string>>("trigList") ;
   triggerBits_      = consumes<edm::TriggerResults>(iConfig.getParameter<edm::InputTag>("bits"));
   hltProcessName_ = iConfig.getUntrackedParameter<std::string>("hltProcessName", "HLT");
@@ -576,6 +583,13 @@ void  OffsetTreeMaker::beginJob() {
   tree->Branch("jet_phi",  "std::vector<float>", &v_jet_phi  );
   tree->Branch("jet_pt",   "std::vector<float>", &v_jet_pt   );
   tree->Branch("jet_area", "std::vector<float>", &v_jet_area );
+
+  tree->Branch("nJetsPuppi",    &nJetsPuppi, "nJetsPuppi/I");
+  tree->Branch("jetpuppi_eta",  "std::vector<float>", &v_jetpuppi_eta  );
+  tree->Branch("jetpuppi_phi",  "std::vector<float>", &v_jetpuppi_phi  );
+  tree->Branch("jetpuppi_pt",   "std::vector<float>", &v_jetpuppi_pt   );
+  tree->Branch("jetpuppi_area", "std::vector<float>", &v_jetpuppi_area );
+  tree->Branch("jetpuppi_jec",  "std::vector<float>", &v_jetpuppi_jec  );
 
   tree->Branch("jet_ch","std::vector<float>",  &v_jet_ch);
   tree->Branch("jet_nh","std::vector<float>", &v_jet_nh);
@@ -1619,6 +1633,30 @@ void OffsetTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
   FactorizedJetCorrector* jetCorrectorsAllRC_puppi     = new FactorizedJetCorrector( jetParsAllRC_puppi );
   FactorizedJetCorrector* jetCorrectorsAllNega_puppi   = new FactorizedJetCorrector( jetParsAllNega_puppi );
   FactorizedJetCorrector* jetCorrectorsAllRCNega_puppi = new FactorizedJetCorrector( jetParsAllRCNega_puppi );
+
+  // AK4 PUPPI jets: raw pt and L2L3 correction (L2L3Residual added for data)
+  // Corrected pt = jetpuppi_pt * jetpuppi_jec. jec is -1 when doL1L2L3Res is false
+  edm::Handle<reco::PFJetCollection> pfJetsPuppi;
+  iEvent.getByToken(pfJetPuppiTag_, pfJetsPuppi);
+  v_jetpuppi_eta.clear(); v_jetpuppi_phi.clear(); v_jetpuppi_pt.clear();
+  v_jetpuppi_area.clear(); v_jetpuppi_jec.clear();
+  nJetsPuppi = pfJetsPuppi.isValid() ? static_cast<int>(pfJetsPuppi->size()) : 0;
+  for (int i = 0; i != nJetsPuppi; ++i) {
+    const reco::PFJet &pjet = pfJetsPuppi->at(i);
+    v_jetpuppi_eta.push_back( pjet.eta() );
+    v_jetpuppi_phi.push_back( pjet.phi() );
+    v_jetpuppi_pt.push_back( pjet.pt() );
+    v_jetpuppi_area.push_back( pjet.jetArea() );
+    float pjec = -1.;
+    if (doL1L2L3Res_) {
+      jetCorrectorsL23_puppi->setJetEta( pjet.eta() );
+      jetCorrectorsL23_puppi->setJetPt( pjet.pt() );
+      jetCorrectorsL23_puppi->setJetA( pjet.jetArea() );
+      jetCorrectorsL23_puppi->setRho( rho );
+      pjec = jetCorrectorsL23_puppi->getCorrection();
+    }
+    v_jetpuppi_jec.push_back( pjec );
+  }
 
   //cout << "v_rc1jet_eta : " << v_rc1jet_eta.size() << endl;
 
